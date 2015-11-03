@@ -1,0 +1,14 @@
+{
+  "name": "dotp_client",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "dependencies": {
+    "buffer": "^3.5.0",
+    "react-native": "^0.13.1",
+    "react-native-camera": "^0.3.6",
+    "tweetnacl": "^0.13.2"
+  }
+}
