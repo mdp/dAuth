@@ -112,6 +112,7 @@ var styles = StyleSheet.create({
     flex: 0.8,
   },
   button: {
+    backgroundColor: '#333333',
     alignItems: 'center',
     flex: 1
   },

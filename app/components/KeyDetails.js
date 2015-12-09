@@ -43,7 +43,7 @@ class KeyDetails extends React.Component {
             style={styles.webView}
           />
         </View>
-        <Text>{this.props.keyData.hash}</Text>
+        <Text>{this.props.keyData.hash()}</Text>
       </View>
     );
   }
