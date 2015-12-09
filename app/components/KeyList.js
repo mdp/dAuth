@@ -12,6 +12,7 @@ var NewKey = require('./NewKey');
 var KeyDetails = require('./KeyDetails');
 var KeyStore = require('../stores/KeyStore');
 
+
 class KeyList extends React.Component {
 
   constructor(){
@@ -23,7 +24,6 @@ class KeyList extends React.Component {
 
   async setInitialState() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.hash() !== r2.hash()});
-    console.log(await KeyStore.getAll())
     this.setState({dataSource: ds.cloneWithRows(await KeyStore.getAll())})
   }
 
@@ -38,14 +38,19 @@ class KeyList extends React.Component {
     });
   }
 
+  async _deleteKeys() {
+    await KeyStore.deleteAll()
+    this.setInitialState()
+  }
+
   _scan() {
     this.props.navigator.push({
       title: 'Scan a Challenge',
       component: Scan
     });
   }
+
   render() {
-    console.log('KeyList render')
     return (
       <View style={styles.container}>
         <ListView
@@ -54,11 +59,20 @@ class KeyList extends React.Component {
           renderRow={this._renderRow.bind(this)}
         />
         <View style={styles.buttonRow}>
-          <TouchableHighlight onPress={() => this._scan()}>
-            <Text style={styles.text}>Scan</Text>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => this._scan()}>
+            <Text style={styles.buttonText}>Scan</Text>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => this._newKey()}>
-            <Text style={styles.text}>New Key</Text>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => this._newKey()} >
+            <Text style={styles.buttonText}>New Key</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => this._deleteKeys()} >
+            <Text style={styles.buttonText}>Delete Keys</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -66,7 +80,6 @@ class KeyList extends React.Component {
   }
   _pressRow(key){
     //Open KeyDetails
-    console.log(key)
     this.props.navigator.push({
       title: 'KeyDetails',
       component: KeyDetails,
@@ -74,16 +87,13 @@ class KeyList extends React.Component {
     });
   }
   _renderRow(rowData: object) {
-    console.log(rowData)
     return (
         <TouchableHighlight onPress={() => this._pressRow(rowData)}>
           <View style={styles.row}>
-            <View style={styles.buttonRow}>
-              <View style={styles.button}>
+            <View style={styles.keyRow}>
                 <Text style={styles.text}>
                   {rowData.pretty()}
                 </Text>
-              </View>
             </View>
             <View style={styles.separator} />
           </View>
@@ -101,10 +111,15 @@ var styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 0.8,
   },
-  buttonRow: {
-    flexDirection: 'row',
-    flex: 0.2,
-    backgroundColor: '#F6F6F6',
+  button: {
+    alignItems: 'center',
+    flex: 1
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
   },
   separator: {
     height:2,
@@ -119,26 +134,17 @@ var styles = StyleSheet.create({
     paddingBottom:20,
     backgroundColor: '#F6F6F6',
   },
+  buttonRow: {
+    flexDirection: 'row',
+    flex: 0.2,
+    backgroundColor: '#F6F6F6',
+  },
   text: {
     flex: 1,
   },
   separator: {
     height: 1,
     backgroundColor: '#000000',
-  },
-  scan: {
-    justifyContent: 'center',
-    alignSelf: 'flex-end',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
 

@@ -79,7 +79,6 @@ var navigator = React.createClass({
       <Navigator
         initialRoute={{component: App, title: 'dOTP'}}
         renderScene={(route, navigator) => {
-          console.log('route: ', route)
           var Component = route.component;
           if (route.component) {
             return (

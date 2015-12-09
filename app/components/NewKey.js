@@ -25,7 +25,7 @@ class NewKey extends React.Component {
     //TODO: Crypto secure rand source needed
     let seed = ''
     for (let i=0; i<40; i++) {
-      seed = seed + PASSWORD_CHARS[Math.floor(Math.random() * 1000) % PASSWORD_CHARS.length]
+      seed = KeyStore.getRandomPhrase(8)
       if (i !== 0 && i % 5 === 0) {
         seed = seed + ' '
       }
@@ -34,13 +34,18 @@ class NewKey extends React.Component {
   }
 
   _onCreateButton() {
-    KeyStore.create(this.state.seed)
+    KeyStore.create(this.state.seed, this.state.salt)
     this.props.navigator.pop()
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <TextInput
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(salt) => this.setState({salt})}
+        value={this.state.salt}
+        />
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         onChangeText={(seed) => this.setState({seed})}

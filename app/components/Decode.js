@@ -4,7 +4,8 @@ var {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  InteractionManager,
+  TouchableHighlight,
 } = React;
 var Scan = require('./Scan');
 var KeyStore = require('../stores/KeyStore');
@@ -12,18 +13,22 @@ var KeyStore = require('../stores/KeyStore');
 class Decode extends React.Component {
   constructor(props) {
     super(props)
-    console.log('Decode')
     this.state = {
-      otp: null
+      otp: 'Decrypting...'
     }
-    this.decodeChallenge(this.props.challenge)
   }
+
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.decodeChallenge(this.props.challenge)
+    });
+  }
+
   async decodeChallenge(challenge) {
-    console.log('Keys', keys)
+    var now = Date.now()
     let keys = await KeyStore.getAll()
-    console.log('Keys', keys)
     for (let key of keys) {
-      console.log('Trying key', key.hash(), challenge)
+      now = Date.now()
       let otp = key.decrypt(challenge)
       if (otp) {
         this.setState({otp: otp})

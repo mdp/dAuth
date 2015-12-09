@@ -9,7 +9,7 @@ var {
 var Camera = require('react-native-camera');
 var Decode = require('./Decode');
 
-const DEBUG = true;
+const DEBUG = false;
 
 const Scan = React.createClass({
 
@@ -42,13 +42,17 @@ const Scan = React.createClass({
     );
   },
   _onBarCodeRead(e) {
-    console.log(e);
+    if (this.debounceRead) {
+      return false
+    }
+    this.debounceRead = true;
+    console.log('Barcode:', e);
     this.props.navigator.push({
       title: 'Decoded Challenge',
       component: Decode,
       popToTop: true,
       props: {
-        challenge: e
+        challenge: e.data
       }
     });
   },

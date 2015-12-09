@@ -6,6 +6,7 @@ var {
   View,
   ListView,
   WebView,
+  InteractionManager,
   TouchableHighlight,
 } = React;
 var colours = require('../config/colours');
@@ -18,14 +19,17 @@ class KeyDetails extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({animationComplete: true})
+    });
+  }
+
   injectedJs() {
     return `new QRCode(document.getElementById("qrcode"), "${this.props.keyData.publicKey}");`
   }
 
   render() {
-    console.log('KeyDetails render')
-    console.log(this.props.keyData)
-    console.log(this.props.navigator)
     return (
       <View style={styles.container}>
         <View style={styles.wrapWebView}>
@@ -39,7 +43,7 @@ class KeyDetails extends React.Component {
             style={styles.webView}
           />
         </View>
-        <Text>{this.props.keyData.publicKey}</Text>
+        <Text>{this.props.keyData.hash}</Text>
       </View>
     );
   }
