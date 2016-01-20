@@ -8,7 +8,10 @@ var {
   TouchableHighlight,
 } = React;
 var Scan = require('./Scan');
+var Styles = require('../config/Styles');
+var Colours = require('../config/Colours');
 var NewKey = require('./NewKey');
+var Decode = require('./Decode');
 var KeyDetails = require('./KeyDetails');
 var KeyStore = require('../stores/KeyStore');
 
@@ -31,10 +34,23 @@ class KeyList extends React.Component {
     this.setInitialState()
   }
 
+  componentWillMount() {
+    return
+    this.props.navigator.push({
+      title: 'Decoded Challenge',
+      component: Decode,
+      popToTop: true,
+      props: {
+        challenge: '12L9XiHboqMGqS9uqYQBiAkEkWHzK8Voo5Sr1oaDCvWFzrDaRbnB8QM6xkAtPZNY7umSXfZD9x4j19RSoYm51g3HEUmrnckZABynLBptcXnx4NBkMQrhVGCfMx',
+      }
+    });
+  }
+
   _newKey() {
     this.props.navigator.push({
       title: 'Create a new key',
-      component: NewKey
+      component: NewKey,
+      navigateBack: true,
     });
   }
 
@@ -69,11 +85,6 @@ class KeyList extends React.Component {
             onPress={() => this._newKey()} >
             <Text style={styles.buttonText}>New Key</Text>
           </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={() => this._deleteKeys()} >
-            <Text style={styles.buttonText}>Delete Keys</Text>
-          </TouchableHighlight>
         </View>
       </View>
     );
@@ -83,6 +94,7 @@ class KeyList extends React.Component {
     this.props.navigator.push({
       title: 'KeyDetails',
       component: KeyDetails,
+      navigateBack: true,
       props: {keyData: key},
     });
   }
@@ -105,19 +117,21 @@ class KeyList extends React.Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: Colours.background,
   },
   listview: {
     flexDirection: 'column',
-    flex: 0.8,
+    flex: 6,
   },
   button: {
-    backgroundColor: '#333333',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: '#DDDDDD',
     alignItems: 'center',
-    flex: 1
+    flex: 1,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: '#666666',
     fontWeight: 'bold',
     fontSize: 20,
     textAlign: 'center',
@@ -133,11 +147,16 @@ var styles = StyleSheet.create({
     padding: 10,
     paddingTop:20,
     paddingBottom:20,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: Colours.background,
+    borderBottomColor: Colours.background,
+    borderTopColor: Colours.lightA,
+    borderRightColor: Colours.background,
+    borderLeftColor: Colours.background,
+    borderWidth: 1,
   },
   buttonRow: {
     flexDirection: 'row',
-    flex: 0.2,
+    flex: 1,
     backgroundColor: '#F6F6F6',
   },
   text: {

@@ -1,30 +1,29 @@
-let React = require('react-native')
-let dotpCrypt = require('dotp-crypt/index.js')
+let dotpCrypt = require('dotp-crypt')
+let AsyncStorage = require('react-native').AsyncStorage
 let Buffer = require('buffer').Buffer
-window.Buffer = Buffer
-
-let {
-  AsyncStorage,
-} = React;
 
 let _data = {};
 
 class KeyPair {
-  constructor(keyPair){
-    this.keyPair = keyPair
+  constructor(data){
+    this.data = data
   }
 
-  hash() {
-    return this.keyPair.publicID
+  get(key) {
+    return this.data[key]
   }
 
   pretty() {
-    return this.keyPair.publicID.substr(0,12)
+    return this.data.name || this.data.publicID.substr(0,12)
+  }
+
+  async destroy() {
+    return await AsyncStorage.removeItem(this.data.publicID)
   }
 
   decrypt(challenge){
     try {
-      return new Buffer(dotpCrypt.decryptChallenge(challenge, this.keyPair.secretKey)).toString()
+      return new Buffer(dotpCrypt.decryptChallenge(challenge, this.data.secretKey)).toString()
     } catch (e) {
       console.log('Failed to decrypt', e)
       return false
@@ -32,58 +31,85 @@ class KeyPair {
   }
 }
 
-function serializeSecretKey(secretKey) {
-  return dotpCrypt.utils.Base58.encode(secretKey)
+exports.decryptChallenge = async function(challenge) {
+  let key = null
+  let result = {}
+  let solvingKey = false
+  let otp = false
+  let keys = await AsyncStorage.getAllKeys()
+  for ( let i = 0; i < keys.length; i++ ) {
+    solvingKey = await exports.get(keys[i])
+    otp = solvingKey.decrypt(challenge)
+    if (otp) {
+      return {key: solvingKey, otp: otp}
+    }
+  }
+  return false
 }
 
-function deserializeToKeyPair(str) {
-  let secretKey = new Uint8Array(dotpCrypt.utils.Base58.decode(str))
+function serialize(secretKey, name) {
+  let data = {
+    secretKey: dotpCrypt.utils.Base58.encode(secretKey),
+    name: name,
+    createdAt: Date.now(),
+  }
+  return JSON.stringify(data)
+}
+
+function deserialize(str) {
+  let data = JSON.parse(str)
+  let secretKey = new Uint8Array(dotpCrypt.utils.Base58.decode(data.secretKey))
   let keyPair = dotpCrypt.nacl.box.keyPair.fromSecretKey(new Uint8Array(secretKey))
   let publicID = dotpCrypt.getPublicID(keyPair.publicKey)
   return {
-    secretKey: keyPair.secretKey,
+    secretKey: secretKey,
     publicKey: keyPair.publicKey,
     publicID: publicID,
+    name: data.name,
+    createdAt: data.createdAt,
   }
 }
 
-exports.deleteAll = async function() {
-  let keys = await AsyncStorage.getAllKeys();
-  return await AsyncStorage.multiRemove(keys)
+exports.destroyAll = function() {
+  return AsyncStorage.clear()
 }
 
-exports.create = async function(passphrase, salt) {
+exports.destroy = function(publicId) {
+  return AsyncStorage.removeItem(publicId)
+}
+
+exports.create = async function(seed, name) {
+  seed = seed.replace(' ','').toUpperCase()
+  console.log(seed, name)
   let keyPair
   let publicID
   try {
-    keyPair = await dotpCrypt.getKeyPair(passphrase, salt)
+    keyPair = dotpCrypt.deriveKeyPair(seed)
     publicID = dotpCrypt.getPublicID(keyPair.publicKey)
-    dotpCrypt.getPublicKeyFromPublicID(publicID)
   } catch (e) {
     console.log(e)
   }
-  await AsyncStorage.setItem(publicID, serializeSecretKey(keyPair.secretKey))
+  console.log(seed, name)
+  console.log(serialize(keyPair.secretKey, name))
+  return await AsyncStorage.setItem(publicID, serialize(keyPair.secretKey, name))
 }
 
-// Returns all the keys we know about
-exports.getAll = async function(filter) {
-  let keys = await AsyncStorage.getAllKeys();
-  console.log(keys)
-  let data = []
-  for (let key of keys) {
-    let keyPair = deserializeToKeyPair(await AsyncStorage.getItem(key))
-    if (filter && keyPair.publicKey[0] === filter) {
-      data.push(new KeyPair(keyPair))
-    } else {
-      data.push(new KeyPair(keyPair))
-    }
+exports.get = async function(publicID) {
+  let item = await AsyncStorage.getItem(publicID)
+  console.log('item', item)
+  console.log('publicId', publicID)
+  return new KeyPair(deserialize(item))
+}
+
+exports.getAll = async function() {
+  console.log('getALL')
+  let keyIds = null
+  keyIds = await AsyncStorage.getAllKeys()
+  let keys = []
+  console.log(keyIds)
+  for ( let i = 0; i < keyIds.length; i++ ) {
+    keys.push(await exports.get(keyIds[i]))
   }
-  return data
+  return keys
 }
-
-exports.getRandomPhrase = function(n) {
-  // TODO: Fix random func with crypto secure rand from os
-  return dotpCrypt.utils.Phrases.get(n, function(arr){arr.set([Math.floor(Math.random()*4294967296)])})
-}
-
 

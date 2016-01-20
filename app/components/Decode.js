@@ -25,17 +25,19 @@ class Decode extends React.Component {
   }
 
   async decodeChallenge(challenge) {
-    var now = Date.now()
-    let keys = await KeyStore.getAll()
-    for (let key of keys) {
-      now = Date.now()
-      let otp = key.decrypt(challenge)
-      if (otp) {
-        this.setState({otp: otp})
-        return true
-      }
+    console.log('Decode', this.props)
+    let result;
+    try {
+      result = await KeyStore.decryptChallenge(challenge)
+    } catch(e) {
+      console.log(e)
     }
-    this.setState({otp: 'Failed to decrypt'})
+    console.log('Result', result)
+    if (result) {
+      this.setState({otp: result.otp, key: result.key})
+    } else {
+      this.setState({otp: 'Failed to decrypt'})
+    }
   }
   _cancel() {
     this.props.navigator.popToTop()

@@ -3,6 +3,12 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
+var Promise = require('bluebird');
+Promise.config({
+    longStackTraces: true,
+    warnings: true
+})
+
 var React = require('react-native');
 var App = require('./app/components/KeyList');
 var {
@@ -16,6 +22,7 @@ var {
 } = React;
 
 var cssVar = require('cssVar');
+var Colours = require('./app/config/Colours');
 
 var NavigationBarRouteMapper = {
 
@@ -28,24 +35,23 @@ var NavigationBarRouteMapper = {
       return (
         <TouchableOpacity
           onPress={() => navigator.popToTop()}
-          style={styles.navBarLeftButton}>
+          style={styles.navBtnLeft}>
           <Text style={[styles.navBarText, styles.navBarButtonText]}>
             Done
           </Text>
         </TouchableOpacity>
       );
+    } else if (route.navigateBack) {
+      return (
+        <TouchableOpacity
+          onPress={() => navigator.pop()}
+          style={styles.navBtnLeft}>
+          <Text style={[styles.navBarText, styles.navBarButtonText]}>
+            Back
+          </Text>
+        </TouchableOpacity>
+      );
     }
-
-    var previousRoute = navState.routeStack[index - 1];
-    return (
-      <TouchableOpacity
-        onPress={() => navigator.pop()}
-        style={styles.navBarLeftButton}>
-        <Text style={[styles.navBarText, styles.navBarButtonText]}>
-          Done
-        </Text>
-      </TouchableOpacity>
-    );
   },
 
   RightButton: function(route, navigator, index, navState) {
@@ -66,7 +72,7 @@ var NavigationBarRouteMapper = {
   Title: function(route, navigator, index, navState) {
     return (
       <Text style={[styles.navBarText, styles.navBarTitleText]}>
-        {route.title} [{index}]
+        {route.title}
       </Text>
     );
   },
@@ -101,29 +107,33 @@ var navigator = React.createClass({
 
 var styles = StyleSheet.create({
   container: {
-    top: 64,
     flex: 1,
+    paddingTop: 64,
   },
   navBar: {
-    backgroundColor: 'white',
+    backgroundColor: Colours.primary,
   },
   navBarText: {
     fontSize: 16,
-    marginVertical: 10,
   },
   navBarTitleText: {
-    color: cssVar('fbui-bluegray-60'),
+    color: '#DDDDDD',
     fontWeight: '500',
     marginVertical: 9,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
   },
   navBarRightButton: {
     paddingRight: 10,
   },
+  navBtnLeft: {
+    padding: 3,
+    marginLeft: 10,
+    marginTop: 7,
+    borderColor: '#DDDDDD',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
   navBarButtonText: {
-    color: cssVar('fbui-accent-blue'),
+    color: '#DDDDDD',
   },
 })
 

@@ -1,5 +1,6 @@
 var React = require('react-native');
 var KeyStore = require('../stores/KeyStore');
+var NewKeyConfirm = require('./NewKeyConfirm');
 var {
   AppRegistry,
   StyleSheet,
@@ -10,32 +11,47 @@ var {
   TouchableHighlight,
 } = React;
 
-const PASSWORD_CHARS = 'abcdefghijklmnopqrstuvwxyz0123456789'
+const SeedCharSet = '023456789abcdefghjkmnpqrstuvwxyz'
+const SeedLen = 32 // 5*32=160 bit of entropy
 
 class NewKey extends React.Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-      seed: this.setRandomSeed()
-    }
+  constructor (p, c) {
+    super(p, c)
+    this.state = this.setInitialState()
+    this.createRandomSeed()
   }
 
-  setRandomSeed() {
-    //TODO: Crypto secure rand source needed
+  async createRandomSeed() {
     let seed = ''
-    for (let i=0; i<40; i++) {
-      seed = KeyStore.getRandomPhrase(8)
-      if (i !== 0 && i % 5 === 0) {
-        seed = seed + ' '
-      }
+    let randArr = await React.NativeModules.SecureRandom.getBytes(32)
+    for (let i=0; i < SeedLen; i++) {
+      seed = seed + SeedCharSet.substr(randArr[i]%32,1)
     }
-    return seed
+    this.setState({seed:seed.toUpperCase()})
   }
 
-  _onCreateButton() {
-    KeyStore.create(this.state.seed, this.state.salt)
-    this.props.navigator.pop()
+  setInitialState() {
+    return {
+      seed: '',
+      name: '',
+    };
+  }
+
+  _handleImportKey() {
+  }
+
+  _handleAddKey() {
+    let seed = this.state.seed
+    KeyStore.create(seed, this.state.name)
+    this.props.navigator.push({
+      title: 'Confirm Key',
+      component: NewKeyConfirm,
+      popToTop: true,
+      props: {
+        seed: seed,
+      },
+    });
   }
 
   render() {
@@ -43,23 +59,25 @@ class NewKey extends React.Component {
       <View style={styles.container}>
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={(salt) => this.setState({salt})}
-        value={this.state.salt}
+        onChangeText={(name) => this.setState({name})}
+        value={this.state.name}
         />
-        <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={(seed) => this.setState({seed})}
-        value={this.state.seed}
-        />
-        <TouchableHighlight onPress={() => this._onCreateButton()}>
+        <TouchableHighlight onPress={() => this._handleAddKey()}>
           <Text>
             Create Key
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => this._handleImportKey()}>
+          <Text>
+            Import From Backup
           </Text>
         </TouchableHighlight>
       </View>
     );
   }
 }
+
+export default NewKey;
 
 var styles = StyleSheet.create({
   container: {
