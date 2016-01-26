@@ -93,7 +93,7 @@ class KeyList extends React.Component {
           <TouchableHighlight
             style={styles.button}
             onPress={() => this._scan()}>
-            <Text style={styles.buttonText}>Scan</Text>
+            <Text style={styles.buttonText}>Decrypt OTP</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -115,6 +115,9 @@ class KeyList extends React.Component {
             <View style={styles.keyRow}>
                 <Text style={styles.text}>
                   {rowData.pretty()}
+                </Text>
+                <Text style={styles.rowSubText}>
+                  {rowData.getPublicID()}
                 </Text>
             </View>
             <View style={styles.separator} />
@@ -150,6 +153,11 @@ let styles = StyleSheet.create({
     backgroundColor: Colours.background,
     alignItems: 'center',
     flex: 1,
+    borderBottomColor: Colours.background,
+    borderTopColor: '#DDDDDD',
+    borderRightColor: Colours.background,
+    borderLeftColor: Colours.background,
+    borderWidth: 1,
   },
   buttonText: {
     color: '#666666',
@@ -164,7 +172,7 @@ let styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     padding: 10,
     paddingTop:20,
     paddingBottom:20,
@@ -181,6 +189,12 @@ let styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+    fontSize: 16,
+  },
+  rowSubText: {
+    flex: 1,
+    fontSize: 11,
+    color: '#555555',
   },
   separator: {
     height: 1,

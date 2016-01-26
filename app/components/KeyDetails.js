@@ -119,9 +119,9 @@ let styles = StyleSheet.create({
     width: 294,
     margin: 20,
     padding: 8,
-    borderWidth: 3,
+    borderWidth: 2,
     backgroundColor: '#FFFFFF',
-    borderColor: Colours.lightA,
+    borderColor: Colours.primary,
   },
 });
 

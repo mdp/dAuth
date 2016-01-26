@@ -62,6 +62,8 @@ let styles = StyleSheet.create({
   },
   seed: {
     fontSize: 20,
+    fontFamily: 'Menlo-Regular',
+    fontWeight: '300',
   },
 });
 
