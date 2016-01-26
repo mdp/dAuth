@@ -1,5 +1,5 @@
-var React = require('react-native');
-var {
+let React = require('react-native');
+let {
   AppRegistry,
   StyleSheet,
   Text,
@@ -7,14 +7,15 @@ var {
   InteractionManager,
   TouchableHighlight,
 } = React;
-var Scan = require('./Scan');
-var KeyStore = require('../stores/KeyStore');
+let Scan = require('./Scan');
+let KeyStore = require('../stores/KeyStore');
+let utils = require('../lib/utils');
 
 class Decode extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      otp: 'Decrypting...'
+      status: 'Decrypting...'
     }
   }
 
@@ -25,18 +26,16 @@ class Decode extends React.Component {
   }
 
   async decodeChallenge(challenge) {
-    console.log('Decode', this.props)
     let result;
     try {
       result = await KeyStore.decryptChallenge(challenge)
     } catch(e) {
       console.log(e)
     }
-    console.log('Result', result)
     if (result) {
-      this.setState({otp: result.otp, key: result.key})
+      this.setState({otp: utils.spaceStr(result.otp), key: result.key, status: ''})
     } else {
-      this.setState({otp: 'Failed to decrypt'})
+      this.setState({status: 'Failed to decrypt'})
     }
   }
   _cancel() {
@@ -45,6 +44,9 @@ class Decode extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.status}>
+          {this.state.status}
+        </Text>
         <Text style={styles.otp}>
           {this.state.otp}
         </Text>
@@ -53,7 +55,7 @@ class Decode extends React.Component {
   }
 }
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -68,6 +70,13 @@ var styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  status: {
+    textAlign: 'center',
+    color: '#333333',
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
   otp: {
     textAlign: 'center',

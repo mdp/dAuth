@@ -13,6 +13,6 @@
     "react-native-qrcode-view": "^1.0.3"
   },
   "devDependencies": {
-    "dotp-crypt": "^0.2.1"
+    "dotp-crypt": "^0.3.0"
   }
 }

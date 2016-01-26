@@ -9,7 +9,6 @@ var {
 var Camera = require('react-native-camera');
 var Decode = require('./Decode');
 
-const DEBUG = false;
 
 const Scan = React.createClass({
 
@@ -20,11 +19,6 @@ const Scan = React.createClass({
   },
 
   componentDidMount() {
-    if (DEBUG) {
-      setTimeout(() => {
-        this._onBarCodeRead('qUYWDzd7w1kc0CJLzDjsEg8sFqt3BczbPd_zcsiefiQ=:AIuasXuiojlDJP6mjDkr93xkUp6oDrVn:oY7lrUOcMdCydb5ZvlJcbIAnVhiTiMmp')
-      }, 1000)
-    }
   },
 
   render() {
@@ -41,6 +35,7 @@ const Scan = React.createClass({
       </Camera>
     );
   },
+
   _onBarCodeRead(e) {
     if (this.debounceRead) {
       return false

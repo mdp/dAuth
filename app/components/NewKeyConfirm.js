@@ -1,8 +1,8 @@
-var React = require('react-native');
-var KeyStore = require('../stores/KeyStore');
-var Colours = require('../config/Colours');
-var Styles = require('../config/Styles');
-var {
+let React = require('react-native');
+let KeyStore = require('../stores/KeyStore');
+let Colours = require('../config/Colours');
+let Styles = require('../config/Styles');
+let {
   AppRegistry,
   StyleSheet,
   Text,
@@ -47,7 +47,7 @@ class NewKeyConfirm extends React.Component {
   }
 }
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',

@@ -2,15 +2,26 @@ let dotpCrypt = require('dotp-crypt')
 let AsyncStorage = require('react-native').AsyncStorage
 let Buffer = require('buffer').Buffer
 
-let _data = {};
-
 class KeyPair {
   constructor(data){
     this.data = data
   }
 
+  getPublicID() {
+    if (this.data.publicID) {
+      return this.data.publicID
+    }
+    let keyPair = dotpCrypt.nacl.box.keyPair.fromSecretKey(this.data.secretKey)
+    this.data.publicID = dotpCrypt.getPublicID(keyPair.publicKey)
+    return this.data.publicID
+  }
+
   get(key) {
     return this.data[key]
+  }
+
+  set(key, val) {
+    return this.data[key] = val
   }
 
   pretty() {
@@ -18,7 +29,20 @@ class KeyPair {
   }
 
   async destroy() {
-    return await AsyncStorage.removeItem(this.data.publicID)
+    return await AsyncStorage.removeItem(this.getPublicID())
+  }
+
+  async save() {
+    return await AsyncStorage.setItem(this.getPublicID(), this.serialize())
+  }
+
+  serialize() {
+    let data = {
+      secretKey: dotpCrypt.utils.Base58.encode(this.data.secretKey),
+      name: this.data.name,
+      createdAt: this.data.createdAt || Date.now(),
+    }
+    return JSON.stringify(data)
   }
 
   decrypt(challenge){
@@ -47,24 +71,11 @@ exports.decryptChallenge = async function(challenge) {
   return false
 }
 
-function serialize(secretKey, name) {
-  let data = {
-    secretKey: dotpCrypt.utils.Base58.encode(secretKey),
-    name: name,
-    createdAt: Date.now(),
-  }
-  return JSON.stringify(data)
-}
-
 function deserialize(str) {
   let data = JSON.parse(str)
   let secretKey = new Uint8Array(dotpCrypt.utils.Base58.decode(data.secretKey))
-  let keyPair = dotpCrypt.nacl.box.keyPair.fromSecretKey(new Uint8Array(secretKey))
-  let publicID = dotpCrypt.getPublicID(keyPair.publicKey)
   return {
     secretKey: secretKey,
-    publicKey: keyPair.publicKey,
-    publicID: publicID,
     name: data.name,
     createdAt: data.createdAt,
   }
@@ -79,30 +90,28 @@ exports.destroy = function(publicId) {
 }
 
 exports.create = async function(seed, name) {
-  seed = seed.replace(' ','').toUpperCase()
-  console.log(seed, name)
-  let keyPair
-  let publicID
   try {
-    keyPair = dotpCrypt.deriveKeyPair(seed)
-    publicID = dotpCrypt.getPublicID(keyPair.publicKey)
+    seed = seed.replace(' ','').toUpperCase()
+    let keyPair
+      keyPair = dotpCrypt.deriveKeyPair(seed)
+    let key = new KeyPair({
+      secretKey: keyPair.secretKey,
+      name: name,
+      createdAt: Date.now(),
+    })
+    return await key.save()
   } catch (e) {
     console.log(e)
   }
-  console.log(seed, name)
-  console.log(serialize(keyPair.secretKey, name))
-  return await AsyncStorage.setItem(publicID, serialize(keyPair.secretKey, name))
 }
 
 exports.get = async function(publicID) {
   let item = await AsyncStorage.getItem(publicID)
-  console.log('item', item)
   console.log('publicId', publicID)
   return new KeyPair(deserialize(item))
 }
 
 exports.getAll = async function() {
-  console.log('getALL')
   let keyIds = null
   keyIds = await AsyncStorage.getAllKeys()
   let keys = []

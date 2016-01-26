@@ -1,5 +1,6 @@
-var React = require('react-native');
-var {
+let dotpCrypt = require('dotp-crypt');
+let React = require('react-native');
+let {
   AppRegistry,
   StyleSheet,
   Text,
@@ -7,43 +8,56 @@ var {
   ListView,
   TouchableHighlight,
 } = React;
-var Scan = require('./Scan');
-var Styles = require('../config/Styles');
-var Colours = require('../config/Colours');
-var NewKey = require('./NewKey');
-var Decode = require('./Decode');
-var KeyDetails = require('./KeyDetails');
-var KeyStore = require('../stores/KeyStore');
+let Scan = require('./Scan');
+let Styles = require('../config/Styles');;
+let Colours = require('../config/Colours');
+let NewKey = require('./NewKey');
+let Decode = require('./Decode');
+let KeyDetails = require('./KeyDetails');
+let KeyStore = require('../stores/KeyStore');
+
+// Takes a public key and returns a dark colour code
+function keyToColour(keyArr) {
+  let colours = []
+  for (let i=0; i < 3; i++) {
+    let colour = keyArr[i]
+    if (colour > 127) {
+      colour = Math.floor(colour * 0.5)
+    }
+    colours.push(colour)
+  }
+  return `rgb(${colours[0]}, ${colours[1]}, ${colours[2]})`
+}
 
 
 class KeyList extends React.Component {
 
   constructor(){
     super()
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {dataSource: ds.cloneWithRows([])}
     this.setInitialState()
+    this.rightButton = {
+      text: '+',
+      onPress: () => {
+        console.log('Add')
+      },
+      style: {},
+    }
   }
 
+
   async setInitialState() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.hash() !== r2.hash()});
-    this.setState({dataSource: ds.cloneWithRows(await KeyStore.getAll())})
+    let keys = await KeyStore.getAll()
+    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.hash() !== r2.hash()});
+    this.setState({
+      dataSource: ds.cloneWithRows(keys),
+      keys: keys,
+    })
   }
 
   componentWillReceiveProps() {
     this.setInitialState()
-  }
-
-  componentWillMount() {
-    return
-    this.props.navigator.push({
-      title: 'Decoded Challenge',
-      component: Decode,
-      popToTop: true,
-      props: {
-        challenge: '12L9XiHboqMGqS9uqYQBiAkEkWHzK8Voo5Sr1oaDCvWFzrDaRbnB8QM6xkAtPZNY7umSXfZD9x4j19RSoYm51g3HEUmrnckZABynLBptcXnx4NBkMQrhVGCfMx',
-      }
-    });
   }
 
   _newKey() {
@@ -62,7 +76,8 @@ class KeyList extends React.Component {
   _scan() {
     this.props.navigator.push({
       title: 'Scan a Challenge',
-      component: Scan
+      component: Scan,
+      navigateBack: true,
     });
   }
 
@@ -80,22 +95,17 @@ class KeyList extends React.Component {
             onPress={() => this._scan()}>
             <Text style={styles.buttonText}>Scan</Text>
           </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={() => this._newKey()} >
-            <Text style={styles.buttonText}>New Key</Text>
-          </TouchableHighlight>
         </View>
       </View>
     );
   }
-  _pressRow(key){
+  _pressRow(keyPair){
     //Open KeyDetails
     this.props.navigator.push({
       title: 'KeyDetails',
       component: KeyDetails,
       navigateBack: true,
-      props: {keyData: key},
+      props: {keyPair: keyPair},
     });
   }
   _renderRow(rowData: object) {
@@ -114,7 +124,18 @@ class KeyList extends React.Component {
   }
 }
 
-var styles = StyleSheet.create({
+KeyList.rightButton = {
+  text: (<Text style={{fontSize: 20}}> +</Text>),
+  onPress: function(route, navigator){
+    navigator.push({
+      title: 'Create a new key',
+      component: NewKey,
+      navigateBack: true,
+    });
+  }
+}
+
+let styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colours.background,
@@ -126,7 +147,7 @@ var styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: Colours.background,
     alignItems: 'center',
     flex: 1,
   },
@@ -157,7 +178,6 @@ var styles = StyleSheet.create({
   buttonRow: {
     flexDirection: 'row',
     flex: 1,
-    backgroundColor: '#F6F6F6',
   },
   text: {
     flex: 1,

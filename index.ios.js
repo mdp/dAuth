@@ -11,6 +11,7 @@ Promise.config({
 
 var React = require('react-native');
 var App = require('./app/components/KeyList');
+var NewKey = require('./app/components/NewKey');
 var {
   Navigator,
   StyleSheet,
@@ -55,13 +56,14 @@ var NavigationBarRouteMapper = {
   },
 
   RightButton: function(route, navigator, index, navState) {
-    if (route.rightButton) {
+    if (route.component.rightButton) {
+      let btn = route.component.rightButton
       return (
         <TouchableOpacity
-          onPress={() => route.rightButton.onPress}
-          style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, route.rightButton.style]}>
-            route.rightButton.text
+          onPress={() => btn.onPress(route, navigator)}
+          style={styles.navBtnRight}>
+          <Text style={[styles.navBarText, styles.navBarButtonText]}>
+            {btn.text}
           </Text>
         </TouchableOpacity>
       );
@@ -83,7 +85,10 @@ var navigator = React.createClass({
   render: function() {
     return (
       <Navigator
-        initialRoute={{component: App, title: 'dOTP'}}
+        initialRoute={{
+          component: App,
+          title: 'dAuth',
+        }}
         renderScene={(route, navigator) => {
           var Component = route.component;
           if (route.component) {
@@ -109,6 +114,7 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 64,
+    backgroundColor: Colours.background,
   },
   navBar: {
     backgroundColor: Colours.primary,
@@ -121,19 +127,19 @@ var styles = StyleSheet.create({
     fontWeight: '500',
     marginVertical: 9,
   },
-  navBarRightButton: {
-    paddingRight: 10,
+  navBtnRight: {
+    padding: 3,
+    marginRight: 10,
+    marginTop: 7,
   },
   navBtnLeft: {
     padding: 3,
     marginLeft: 10,
     marginTop: 7,
-    borderColor: '#DDDDDD',
-    borderWidth: 1,
-    borderRadius: 5,
   },
   navBarButtonText: {
     color: '#DDDDDD',
+    fontSize: 16,
   },
 })
 

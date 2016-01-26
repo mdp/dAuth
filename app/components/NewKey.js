@@ -1,7 +1,9 @@
-var React = require('react-native');
-var KeyStore = require('../stores/KeyStore');
-var NewKeyConfirm = require('./NewKeyConfirm');
-var {
+let React = require('react-native');
+let KeyStore = require('../stores/KeyStore');
+let NewKeyConfirm = require('./NewKeyConfirm');
+let ImportKey = require('./ImportKey');
+let Styles = require('../config/Styles');
+let {
   AppRegistry,
   StyleSheet,
   Text,
@@ -39,6 +41,13 @@ class NewKey extends React.Component {
   }
 
   _handleImportKey() {
+    console.log(ImportKey)
+    this.props.navigator.push({
+      title: 'Import Key',
+      component: ImportKey,
+      navigateBack: true,
+      props: {},
+    });
   }
 
   _handleAddKey() {
@@ -58,17 +67,24 @@ class NewKey extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        style={{height: 40,
+          borderColor: 'gray',
+          fontSize: 30,
+          borderWidth: 1,
+          marginVertical: 10,
+          textAlign: 'center',
+          }}
+        placeholder='Key Name'
         onChangeText={(name) => this.setState({name})}
         value={this.state.name}
         />
         <TouchableHighlight onPress={() => this._handleAddKey()}>
-          <Text>
+          <Text style={Styles.btn}>
             Create Key
           </Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => this._handleImportKey()}>
-          <Text>
+          <Text style={Styles.btn}>
             Import From Backup
           </Text>
         </TouchableHighlight>
@@ -77,10 +93,10 @@ class NewKey extends React.Component {
   }
 }
 
-export default NewKey;
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
+    padding: 20,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
