@@ -29,6 +29,7 @@ public class QRCodeScanModule extends ReactContextBaseJavaModule {
     public void scan() {
         IntentIntegrator integrator = new IntentIntegrator(mActivity);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setCaptureActivity(ScanActivity.class);
         integrator.setPrompt("Scan a challenge");
         integrator.initiateScan();
 
