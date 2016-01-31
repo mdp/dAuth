@@ -19,34 +19,48 @@ let EditKey = require('./EditKey');
 let QRCodeJS = require('../lib/qrcode-inject.js');
 let utils = require('../lib/utils');
 
+function getHtml(publicID){
+  return(
+    `
+  <html>
+  <head> <meta charset="UTF-8"> </head>
+  <body><div id="qrcode"></div></body>
+  <script>
+    ${QRCodeJS};
+    new QRCode(document.getElementById("qrcode"), "${publicID}");
+  </script>
+  </html>
+`)
+}
+
 class KeyDetails extends React.Component {
 
   constructor(props){
     super(props)
     this.state = {
-      animationComplete: false
+      animationComplete: true
     }
   }
 
   componentDidMount() {
-    InteractionManager.runAfterInteractions(() => {
-      this.setState({animationComplete: true})
-    });
   }
 
-  injectedJs() {
-    return (`${QRCodeJS}
-    new QRCode(document.getElementById("qrcode"), "${this.props.keyPair.get('publicID')}");`)
-  }
+
 
   renderQRCode() {
     if(this.state.animationComplete) {
       return(
         <WebView
         style={styles.qrWebView}
-        injectedJavaScript={this.injectedJs()}
+        scrollEnabled={false}
+        javaScriptEnabled={true}
         javaScriptEnabledAndroid={true}
-        html='<body><div id="qrcode"></div></body>'
+        domStorageEnabled={true}
+        onError={(e)=> {
+            console.log(e)
+          }
+        }
+        html={getHtml(this.props.publicID)}
         />
       )
     }

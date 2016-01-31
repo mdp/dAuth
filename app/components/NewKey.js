@@ -27,6 +27,7 @@ class NewKey extends React.Component {
   async createRandomSeed() {
     let seed = ''
     let randArr = await React.NativeModules.SecureRandom.getBytes(32)
+    console.log('dAuth: RandArr:', randArr)
     for (let i=0; i < SeedLen; i++) {
       seed = seed + SeedCharSet.substr(randArr[i]%32,1)
     }
@@ -72,7 +73,6 @@ class NewKey extends React.Component {
           fontSize: 30,
           borderWidth: 1,
           marginVertical: 10,
-          textAlign: 'center',
           }}
         placeholder='Key Name'
         onChangeText={(name) => this.setState({name})}
