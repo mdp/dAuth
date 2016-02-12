@@ -10,6 +10,8 @@ let {
 let Scan = require('./Scan');
 let KeyStore = require('../stores/KeyStore');
 let utils = require('../lib/utils');
+let Styles = require('../config/Styles');
+let Colours = require('../config/Colours');
 
 class Decode extends React.Component {
   constructor(props) {
@@ -33,7 +35,10 @@ class Decode extends React.Component {
       console.log(e)
     }
     if (result) {
-      this.setState({otp: utils.spaceStr(result.otp), key: result.key, status: ''})
+      this.setState({otp: utils.spaceStr(result.otp),
+                    key: result.key,
+                    challengerID: result.challengerID,
+                    status: ''})
     } else {
       this.setState({status: 'Failed to decrypt'})
     }
@@ -42,17 +47,30 @@ class Decode extends React.Component {
     this.props.navigator.popToTop()
   }
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.status}>
-          {this.state.status}
-        </Text>
-        <Text style={styles.otp}>
-          {this.state.otp}
-        </Text>
-      </View>
-    );
-  }
+    if (this.state.otp) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.status}>
+            One Time Password for:
+          </Text>
+          <Text style={styles.challengerID}>
+            {this.state.challengerID}
+          </Text>
+          <Text style={styles.otp}>
+            {this.state.otp}
+          </Text>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.status}>
+            {this.state.status}
+          </Text>
+        </View>
+      );
+    }
+ }
 }
 
 let styles = StyleSheet.create({
@@ -74,9 +92,14 @@ let styles = StyleSheet.create({
   status: {
     textAlign: 'center',
     color: '#333333',
-    fontSize: 25,
-    fontWeight: 'bold',
+    fontSize: 20,
     marginBottom: 5,
+  },
+  challengerID: {
+    textAlign: 'center',
+    color: '#333333',
+    fontWeight: 'bold',
+    fontSize: 25,
   },
   otp: {
     textAlign: 'center',
@@ -84,6 +107,11 @@ let styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 5,
+    marginTop: 25,
+    padding: 20,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: Colours.primary,
   },
 });
 

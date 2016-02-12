@@ -11,9 +11,18 @@ class KeyPair {
     if (this.data.publicID) {
       return this.data.publicID
     }
-    let keyPair = dotpCrypt.utils.nacl.box.keyPair.fromSecretKey(this.data.secretKey)
+    let keyPair = this.getKeyPair()
     this.data.publicID = dotpCrypt.getPublicID(keyPair.publicKey)
     return this.data.publicID
+  }
+
+  getKeyPair() {
+    if (this.data.keyPair) {
+      return this.data.keyPair
+    }
+    let keyPair = dotpCrypt.utils.nacl.box.keyPair.fromSecretKey(this.data.secretKey)
+    this.data.keyPair = keyPair
+    return this.data.keyPair
   }
 
   get(key) {
@@ -46,8 +55,15 @@ class KeyPair {
   }
 
   decrypt(challenge){
+    let keyPair = this.getKeyPair()
     try {
-      return new Buffer(dotpCrypt.decryptChallenge(challenge, this.data.secretKey)).toString()
+      decoded = dotpCrypt.decryptChallenge(challenge, keyPair)
+      if (!decoded) { return false }
+      return {
+        key: this,
+        otp: decoded.otp,
+        challengerID: decoded.id,
+      }
     } catch (e) {
       console.log('Failed to decrypt', e)
       return false
@@ -63,9 +79,9 @@ exports.decryptChallenge = async function(challenge) {
   let keys = await AsyncStorage.getAllKeys()
   for ( let i = 0; i < keys.length; i++ ) {
     solvingKey = await exports.get(keys[i])
-    otp = solvingKey.decrypt(challenge)
-    if (otp) {
-      return {key: solvingKey, otp: otp}
+    var decoded = solvingKey.decrypt(challenge)
+    if (decoded) {
+      return decoded
     }
   }
   return false

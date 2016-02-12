@@ -59,7 +59,7 @@ class KeyDetails extends React.Component {
             console.log(e)
           }
         }
-        html={getHtml(this.props.publicID)}
+        html={getHtml(this.props.keyPair.getPublicID())}
         />
       )
     }
