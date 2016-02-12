@@ -10,9 +10,8 @@
     "buffer": "^3.5.0",
     "react-native": "^0.18.1",
     "react-native-camera": "^0.3.8",
-    "react-native-qrcode-view": "^1.0.3"
+    "dotp-crypt": "^0.4.0"
   },
   "devDependencies": {
-    "dotp-crypt": "^0.3.0"
   }
 }

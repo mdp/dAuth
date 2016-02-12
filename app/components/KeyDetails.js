@@ -12,7 +12,6 @@ let {
 } = React;
 let Colours = require('../config/Colours');
 let Styles = require('../config/Styles');
-let QRCode = require('react-native-qrcode');
 let Scan = require('./Scan');
 let NewKey = require('./NewKey');
 let EditKey = require('./EditKey');

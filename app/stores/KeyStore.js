@@ -11,7 +11,7 @@ class KeyPair {
     if (this.data.publicID) {
       return this.data.publicID
     }
-    let keyPair = dotpCrypt.nacl.box.keyPair.fromSecretKey(this.data.secretKey)
+    let keyPair = dotpCrypt.utils.nacl.box.keyPair.fromSecretKey(this.data.secretKey)
     this.data.publicID = dotpCrypt.getPublicID(keyPair.publicKey)
     return this.data.publicID
   }
@@ -25,7 +25,7 @@ class KeyPair {
   }
 
   pretty() {
-    return this.data.name || this.data.publicID.substr(0,12)
+    return this.data.name || this.getPublicID().substr(0,12)
   }
 
   async destroy() {
@@ -107,7 +107,6 @@ exports.create = async function(seed, name) {
 
 exports.get = async function(publicID) {
   let item = await AsyncStorage.getItem(publicID)
-  console.log('publicId', publicID)
   return new KeyPair(deserialize(item))
 }
 
@@ -115,7 +114,6 @@ exports.getAll = async function() {
   let keyIds = null
   keyIds = await AsyncStorage.getAllKeys()
   let keys = []
-  console.log(keyIds)
   for ( let i = 0; i < keyIds.length; i++ ) {
     keys.push(await exports.get(keyIds[i]))
   }
