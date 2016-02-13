@@ -1,6 +1,6 @@
 # dAuth
 
-![assets/dAuthScreencap.png](assets/dAuthScreencap.png)
+![assets/dAuthScreencap.png](assets/dAuthScreencap1.png)
 
 ## Installation
 
