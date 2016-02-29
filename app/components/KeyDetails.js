@@ -5,6 +5,7 @@ let {
   Text,
   View,
   ListView,
+  ScrollView,
   WebView,
   InteractionManager,
   TouchableHighlight,
@@ -71,17 +72,19 @@ class KeyDetails extends React.Component {
     let createdAt = `${d.getFullYear()}.${utils.zeroPad(d.getMonth()+1,2)}.${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
     // 2016.01.26 15:45
     return (
-      <View style={styles.container}>
-        <Text style={styles.keyName}>{this.props.keyPair.get('name')}</Text>
-        <View style={styles.qrWrapper}>
-          {this.renderQRCode()}
+      <ScrollView>
+        <View style={styles.container}>
+            <Text style={styles.keyName}>{this.props.keyPair.get('name')}</Text>
+            <View style={styles.qrWrapper}>
+              {this.renderQRCode()}
+            </View>
+            <View style={styles.details}>
+              <Text style={styles.heading}>Public ID</Text>
+              <Text style={styles.publicID}>{utils.spaceStr(this.props.keyPair.getPublicID())} </Text>
+              <Text style={styles.heading}>Created At: <Text style={styles.publicID}>{ createdAt } </Text></Text>
+            </View>
         </View>
-        <View style={styles.details}>
-          <Text style={styles.heading}>Public ID</Text>
-          <Text style={styles.publicID}>{utils.spaceStr(this.props.keyPair.getPublicID())} </Text>
-          <Text style={styles.heading}>Created At: <Text style={styles.publicID}>{ createdAt } </Text></Text>
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }

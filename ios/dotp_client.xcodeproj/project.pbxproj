@@ -21,8 +21,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5045A86A1C4C47B40065115A /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5045A8681C4C461A0065115A /* libRCTCamera.a */; };
-		5045A8711C4C4ECE0065115A /* SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5045A8701C4C4ECE0065115A /* SecureRandom.swift */; };
 		5045A8781C4C50CF0065115A /* SecureRandomBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 5045A8771C4C50CF0065115A /* SecureRandomBridge.m */; };
+		50678C941C7FCF3C00B69B16 /* SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678C931C7FCF3C00B69B16 /* SecureRandom.swift */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -133,9 +133,9 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = dotp_client/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		5045A8631C4C461A0065115A /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
-		5045A8701C4C4ECE0065115A /* SecureRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureRandom.swift; sourceTree = "<group>"; };
 		5045A8771C4C50CF0065115A /* SecureRandomBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecureRandomBridge.m; path = dotp_client/SecureRandomBridge.m; sourceTree = "<group>"; };
-		5045A8791C4C52D60065115A /* dotp_client-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dotp_client-Bridging-Header.h"; sourceTree = "<group>"; };
+		50678C931C7FCF3C00B69B16 /* SecureRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecureRandom.swift; path = dotp_client/SecureRandom.swift; sourceTree = "<group>"; };
+		50678CA11C7FD00100B69B16 /* dotp_client-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dotp_client-Bridging-Header.h"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,8 +245,8 @@
 		13B07FAE1A68108700A75B9A /* dotp_client */ = {
 			isa = PBXGroup;
 			children = (
-				5045A8791C4C52D60065115A /* dotp_client-Bridging-Header.h */,
-				5045A8701C4C4ECE0065115A /* SecureRandom.swift */,
+				50678CA11C7FD00100B69B16 /* dotp_client-Bridging-Header.h */,
+				50678C931C7FCF3C00B69B16 /* SecureRandom.swift */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -579,10 +579,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50678C941C7FCF3C00B69B16 /* SecureRandom.swift in Sources */,
 				5045A8781C4C50CF0065115A /* SecureRandomBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				5045A8711C4C4ECE0065115A /* SecureRandom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +657,7 @@
 				PRODUCT_NAME = dAuth;
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -679,6 +680,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
 				PRODUCT_NAME = dAuth;
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
