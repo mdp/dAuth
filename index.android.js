@@ -3,11 +3,6 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
-var Promise = require('bluebird');
-Promise.config({
-    longStackTraces: true,
-    warnings: true
-})
 
 var React = require('react-native');
 var App = require('./app/components/KeyList');
