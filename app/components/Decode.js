@@ -22,6 +22,7 @@ class Decode extends React.Component {
   }
 
   componentDidMount() {
+    console.log('Props', this.props.challenge)
     InteractionManager.runAfterInteractions(() => {
       this.decodeChallenge(this.props.challenge)
     });
@@ -115,4 +116,5 @@ let styles = StyleSheet.create({
   },
 });
 
+Decode.TestChallenge = "ACZLAQCE6ARO2IPUIDPFFW6PLX5NUI4OV75SYPR3UGSK4EVL3PMIS564JPX7U5CVIKY74VYTG5IFVSEWOE4IA6CZCSUYA2HV6RJJNWKTEV55LC2VIRNR2ZBR23XULHXSRI"
 module.exports = Decode

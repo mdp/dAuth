@@ -11,6 +11,7 @@ Promise.config({
 
 var React = require('react-native');
 var App = require('./app/components/KeyList');
+var Decode = require('./app/components/Decode');
 var NewKey = require('./app/components/NewKey');
 var {
   Navigator,
@@ -81,14 +82,26 @@ var NavigationBarRouteMapper = {
 
 };
 
+const DEBUG_OTP = false
 var navigator = React.createClass({
   render: function() {
+    var initialRoute = {
+      component: App,
+      title: 'dAuth',
+    }
+    if (DEBUG_OTP) {
+      console.log(Decode.TestChallenge)
+      initialRoute = {
+        component: Decode,
+        title: 'Decoded Challenge',
+        props:{
+          challenge: Decode.TestChallenge,
+        },
+      }
+    }
     return (
       <Navigator
-        initialRoute={{
-          component: App,
-          title: 'dAuth',
-        }}
+        initialRoute={initialRoute}
         renderScene={(route, navigator) => {
           var Component = route.component;
           if (route.component) {
