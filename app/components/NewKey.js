@@ -14,7 +14,7 @@ let {
 } = React;
 
 const SeedCharSet = '023456789abcdefghjkmnpqrstuvwxyz'
-const SeedLen = 32 // 5*32=160 bit of entropy
+const SeedLen = 32 // 5*32=160 bits of entropy
 
 class NewKey extends React.Component {
 

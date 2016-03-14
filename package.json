@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "buffer": "^3.5.0",
+    "dotp-crypt": "^0.4.0",
     "react-native": "^0.21.0",
     "react-native-camera": "^0.3.8",
-    "dotp-crypt": "^0.4.0"
+    "realm": "git+https://github.com/realm/realm-js.git#ac1a8f050e144ebfae829fb335751e78bac59111"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

@@ -28,10 +28,10 @@ class Decode extends React.Component {
     });
   }
 
-  async decodeChallenge(challenge) {
+  decodeChallenge(challenge) {
     let result;
     try {
-      result = await KeyStore.decryptChallenge(challenge)
+      result = KeyStore.decryptChallenge(challenge)
     } catch(e) {
       console.log(e)
     }

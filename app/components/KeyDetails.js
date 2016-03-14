@@ -45,8 +45,6 @@ class KeyDetails extends React.Component {
   componentDidMount() {
   }
 
-
-
   renderQRCode() {
     if(this.state.animationComplete) {
       return(
@@ -54,13 +52,12 @@ class KeyDetails extends React.Component {
         style={styles.qrWebView}
         scrollEnabled={false}
         javaScriptEnabled={true}
-        javaScriptEnabledAndroid={true}
         domStorageEnabled={true}
         onError={(e)=> {
             console.log(e)
           }
         }
-        html={getHtml(this.props.keyPair.getPublicID())}
+        source={{}, {html: getHtml(this.props.keyPair.getPublicID())}}
         />
       )
     }
@@ -68,13 +65,13 @@ class KeyDetails extends React.Component {
   }
 
   render() {
-    let d = new Date(this.props.keyPair.get('createdAt'))
+    let d = this.props.keyPair.createdAt
     let createdAt = `${d.getFullYear()}.${utils.zeroPad(d.getMonth()+1,2)}.${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
     // 2016.01.26 15:45
     return (
       <ScrollView>
         <View style={styles.container}>
-            <Text style={styles.keyName}>{this.props.keyPair.get('name')}</Text>
+            <Text style={styles.keyName}>{this.props.keyPair.name}</Text>
             <View style={styles.qrWrapper}>
               {this.renderQRCode()}
             </View>
