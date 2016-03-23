@@ -17,7 +17,9 @@ let Scan = require('./Scan');
 let NewKey = require('./NewKey');
 let EditKey = require('./EditKey');
 let QRCodeJS = require('../lib/qrcode-inject.js');
+let CopyButton = require('./CopyButton');
 let utils = require('../lib/utils');
+let Key = require('../stores/KeyStore').Key
 
 function getHtml(publicID){
   return(
@@ -76,7 +78,10 @@ class KeyDetails extends React.Component {
               {this.renderQRCode()}
             </View>
             <View style={styles.details}>
-              <Text style={styles.heading}>Public ID</Text>
+              <View style={styles.header}>
+                <Text style={styles.heading}>Public ID - </Text>
+                <CopyButton strToCopy={this.props.keyPair.getPublicID()} />
+              </View>
               <Text style={styles.publicID}>{utils.spaceStr(this.props.keyPair.getPublicID())} </Text>
               <Text style={styles.heading}>Created At: <Text style={styles.publicID}>{ createdAt } </Text></Text>
             </View>
@@ -84,6 +89,10 @@ class KeyDetails extends React.Component {
       </ScrollView>
     );
   }
+}
+
+KeyDetails.propTypes = {
+  keyPair: React.PropTypes.instanceOf(Key),
 }
 
 KeyDetails.rightButton = {
@@ -135,6 +144,9 @@ let styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: '#FFFFFF',
     borderColor: Colours.primary,
+  },
+  header: {
+    flexDirection: 'row',
   },
 });
 

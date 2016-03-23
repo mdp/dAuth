@@ -7,7 +7,7 @@ let {
   InteractionManager,
   TouchableHighlight,
 } = React;
-let Scan = require('./Scan');
+let CopyButton = require('./CopyButton');
 let KeyStore = require('../stores/KeyStore');
 let utils = require('../lib/utils');
 let Styles = require('../config/Styles');
@@ -60,6 +60,9 @@ class Decode extends React.Component {
           <Text style={styles.otp}>
             {this.state.otp}
           </Text>
+          <View style={styles.copyButton}>
+            <CopyButton strToCopy={this.state.otp}/>
+          </View>
         </View>
       );
     } else {
@@ -114,7 +117,14 @@ let styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: Colours.primary,
   },
+  copyButton: {
+    marginVertical: 10,
+  },
 });
 
-Decode.TestChallenge = "ACZLAQCE6ARO2IPUIDPFFW6PLX5NUI4OV75SYPR3UGSK4EVL3PMIS564JPX7U5CVIKY74VYTG5IFVSEWOE4IA6CZCSUYA2HV6RJJNWKTEV55LC2VIRNR2ZBR23XULHXSRI"
+Decode.propTypes = {
+  challenge: React.PropTypes.string,
+}
+
+Decode.TestChallenge = 'ACZLAQCE6ARO2IPUIDPFFW6PLX5NUI4OV75SYPR3UGSK4EVL3PMIS564JPX7U5CVIKY74VYTG5IFVSEWOE4IA6CZCSUYA2HV6RJJNWKTEV55LC2VIRNR2ZBR23XULHXSRI'
 module.exports = Decode

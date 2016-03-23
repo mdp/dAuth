@@ -40,13 +40,6 @@ class KeyList extends React.Component {
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {dataSource: ds.cloneWithRows([])}
     this.state = this.fetchInitialState()
-    this.rightButton = {
-      text: '+',
-      onPress: () => {
-        logger.info('Add')
-      },
-      style: {},
-    }
   }
 
 
@@ -224,5 +217,9 @@ let styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
 });
+
+KeyList.propTypes = {
+  navigator: React.PropTypes.instanceOf(React.Navigator),
+}
 
 module.exports = KeyList

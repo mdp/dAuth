@@ -8,7 +8,7 @@ var {
 } = React;
 var Camera = require('react-native-camera');
 var Decode = require('./Decode');
-
+var logger = require('../lib/logger')
 
 const Scan = React.createClass({
 
@@ -41,7 +41,7 @@ const Scan = React.createClass({
       return false
     }
     this.debounceRead = true;
-    console.log('Barcode:', e);
+    logger.debug('Barcode:', e);
     this.props.navigator.push({
       title: 'Decoded Challenge',
       component: Decode,

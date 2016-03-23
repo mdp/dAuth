@@ -1,5 +1,4 @@
 let dotpCrypt = require('dotp-crypt')
-let AsyncStorage = require('react-native').AsyncStorage
 let Buffer = require('buffer').Buffer
 let Realm = require('realm') // Need to use the latest to get encryption
 let nacl = dotpCrypt.utils.nacl
@@ -88,6 +87,8 @@ Key.schema = {
     createdAt: 'date',
   }
 };
+
+exports.Key = Key
 
 let realm;
 exports.setupDatastore = async function() {
