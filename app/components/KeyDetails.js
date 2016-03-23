@@ -20,6 +20,7 @@ let QRCodeJS = require('../lib/qrcode-inject.js');
 let CopyButton = require('./CopyButton');
 let utils = require('../lib/utils');
 let Key = require('../stores/KeyStore').Key
+let logger = require('../lib/logger')
 
 function getHtml(publicID){
   return(
@@ -56,7 +57,7 @@ class KeyDetails extends React.Component {
         javaScriptEnabled={true}
         domStorageEnabled={true}
         onError={(e)=> {
-            console.log(e)
+            logger.warn(e)
           }
         }
         source={{}, {html: getHtml(this.props.keyPair.getPublicID())}}

@@ -10,6 +10,7 @@ let {
   AlertIOS,
 } = React;
 let Styles = require('../config/Styles');
+let logger = require('../lib/logger')
 
 class EditKey extends React.Component {
 
@@ -59,7 +60,7 @@ class EditKey extends React.Component {
                   this.props.navigator.popToTop();
                 }
               },
-              {text: 'Cancel', onPress: () => console.log('cancel') },
+              {text: 'Cancel', onPress: () => logger.info('cancel') },
             ]
           )}>
           <Text

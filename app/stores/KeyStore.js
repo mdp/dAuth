@@ -2,6 +2,7 @@ let dotpCrypt = require('dotp-crypt')
 let Buffer = require('buffer').Buffer
 let Realm = require('realm') // Need to use the latest to get encryption
 let nacl = dotpCrypt.utils.nacl
+let logger = require('../lib/logger')
 
 let DataStoreKey =  null
 
@@ -58,7 +59,7 @@ class Key {
         challengerID: decoded.id,
       }
     } catch (e) {
-      console.log('Failed to decrypt', e)
+      logger.warn('Failed to decrypt', e)
       return false
     }
   }
@@ -134,7 +135,7 @@ exports.create = function(seed, name) {
     })
     return key
   } catch (e) {
-    console.log(e)
+    logger.warn(e)
   }
 }
 

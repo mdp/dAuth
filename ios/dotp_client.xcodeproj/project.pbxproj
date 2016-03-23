@@ -926,7 +926,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
 				PRODUCT_NAME = dAuth;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f17a2d0f-eb74-4eac-9216-01c7540bee50";
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -942,7 +942,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = dotp_client/dAuth.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -958,7 +958,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
 				PRODUCT_NAME = dAuth;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f17a2d0f-eb74-4eac-9216-01c7540bee50";
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

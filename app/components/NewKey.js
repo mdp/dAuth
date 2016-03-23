@@ -13,6 +13,8 @@ let {
   TouchableHighlight,
 } = React;
 
+let logger = require('../lib/logger')
+
 const SeedCharSet = '023456789abcdefghjkmnpqrstuvwxyz'
 const SeedLen = 32 // 5*32=160 bits of entropy
 
@@ -27,7 +29,7 @@ class NewKey extends React.Component {
   async createRandomSeed() {
     let seed = ''
     let randArr = await React.NativeModules.SecureRandom.getBytes(32)
-    console.log('dAuth: RandArr:', randArr)
+    logger.debug('dAuth: RandArr:', randArr)
     for (let i=0; i < SeedLen; i++) {
       seed = seed + SeedCharSet.substr(randArr[i]%32,1)
     }
@@ -42,7 +44,6 @@ class NewKey extends React.Component {
   }
 
   _handleImportKey() {
-    console.log(ImportKey)
     this.props.navigator.push({
       title: 'Import Key',
       component: ImportKey,

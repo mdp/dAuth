@@ -7,7 +7,6 @@ let {
 class CopyButton extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.children)
     this.state = {
       buttonText: 'Copy'
     }

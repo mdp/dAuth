@@ -12,6 +12,7 @@ let KeyStore = require('../stores/KeyStore');
 let utils = require('../lib/utils');
 let Styles = require('../config/Styles');
 let Colours = require('../config/Colours');
+let logger = require('../lib/logger')
 
 class Decode extends React.Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class Decode extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Props', this.props.challenge)
     InteractionManager.runAfterInteractions(() => {
       this.decodeChallenge(this.props.challenge)
     });
@@ -33,7 +33,7 @@ class Decode extends React.Component {
     try {
       result = KeyStore.decryptChallenge(challenge)
     } catch(e) {
-      console.log(e)
+      logger.debug(e)
     }
     if (result) {
       this.setState({otp: utils.spaceStr(result.otp),
