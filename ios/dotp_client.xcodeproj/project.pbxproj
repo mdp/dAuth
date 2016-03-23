@@ -908,8 +908,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = dotp_client/dAuth.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Trailing Space LLC (9ZZZ6JZWHG)";
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -926,7 +925,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
 				PRODUCT_NAME = dAuth;
-				PROVISIONING_PROFILE = "f17a2d0f-eb74-4eac-9216-01c7540bee50";
+				PROVISIONING_PROFILE = "e2afa2b4-da7c-4018-a019-fc2c098461d3";
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -941,8 +940,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = dotp_client/dAuth.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Trailing Space LLC (9ZZZ6JZWHG)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -958,7 +956,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
 				PRODUCT_NAME = dAuth;
-				PROVISIONING_PROFILE = "f17a2d0f-eb74-4eac-9216-01c7540bee50";
+				PROVISIONING_PROFILE = "e2afa2b4-da7c-4018-a019-fc2c098461d3";
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
