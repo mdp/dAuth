@@ -4,6 +4,7 @@ let {
   AppRegistry,
   StyleSheet,
   Text,
+  Linking,
   View,
   ListView,
   TouchableHighlight,
@@ -15,6 +16,7 @@ let NewKey = require('./NewKey');
 let Decode = require('./Decode');
 let KeyDetails = require('./KeyDetails');
 let KeyStore = require('../stores/KeyStore');
+let logger = require('../lib/logger')
 
 // Takes a public key and returns a dark colour code
 function keyToColour(keyArr) {
@@ -30,34 +32,60 @@ function keyToColour(keyArr) {
 }
 
 
+let InboundURLMatcher = new RegExp('https:\/\/dauth.atrailing.space\/([a-zA-Z0-9]+)')
 class KeyList extends React.Component {
 
   constructor(){
     super()
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {dataSource: ds.cloneWithRows([])}
-    this.setInitialState()
+    this.state = this.fetchInitialState()
     this.rightButton = {
       text: '+',
       onPress: () => {
-        console.log('Add')
+        logger.info('Add')
       },
       style: {},
     }
   }
 
 
-  async setInitialState() {
-    let keys = await KeyStore.getAll()
+  fetchInitialState() {
+    let keys = KeyStore.getAll()
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.hash() !== r2.hash()});
-    this.setState({
+    return {
       dataSource: ds.cloneWithRows(keys),
       keys: keys,
-    })
+    }
   }
 
   componentWillReceiveProps() {
-    this.setInitialState()
+    this.setState(this.fetchInitialState())
+  }
+
+  componentDidMount() {
+    Linking.addEventListener('url', this._handleOpenURL.bind(this));
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this._handleOpenURL.bind(this));
+  }
+
+  _handleOpenURL(event) {
+    logger.debug('OpenURLEvent', event);
+    let url = event.url
+    let challengeMatch = url.match(InboundURLMatcher)
+    if (challengeMatch.length > 1) {
+      this.props.navigator.push({
+        title: 'Decoded Challenge',
+        component: Decode,
+        popToTop: true,
+        props: {
+          challenge: challengeMatch[1]
+        }
+      });
+
+    }
   }
 
   _newKey() {
@@ -66,11 +94,6 @@ class KeyList extends React.Component {
       component: NewKey,
       navigateBack: true,
     });
-  }
-
-  async _deleteKeys() {
-    await KeyStore.deleteAll()
-    this.setInitialState()
   }
 
   _scan() {

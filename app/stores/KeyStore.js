@@ -1,15 +1,46 @@
 let dotpCrypt = require('dotp-crypt')
 let AsyncStorage = require('react-native').AsyncStorage
 let Buffer = require('buffer').Buffer
+let Realm = require('realm') // Need to use the latest to get encryption
+let nacl = dotpCrypt.utils.nacl
+
+let DataStoreKey =  null
+
+// Takes in the secretKey and the publicKey and returns an encrypted
+// version to store in the realm datebase. The encryption key is handled by
+// the OS secret store (ios Keychain)
+function encryptKey(secretKey, publicKey) {
+  if (!DataStoreKey){
+    throw('Must initialize with the master encryption key')
+  }
+  let nonce = publicKey.subarray(0, nacl.secretbox.nonceLength)
+  return nacl.secretbox(secretKey, nonce, DataStoreKey)
+}
+
+function decryptKey(box, publicKey) {
+  if (!DataStoreKey){
+    throw('Must initialize with the master encryption key')
+  }
+  let nonce = publicKey.subarray(0, nacl.secretbox.nonceLength)
+  return nacl.secretbox.open(box, nonce, DataStoreKey)
+}
 
 class Key {
 
   getPublicID() {
-    return dotpCrypt.getPublicID(new Uint8Array(this.publicKey))
+    return this.publicID
+  }
+
+  getSecretKey() {
+    return decryptKey(new Uint8Array(this.secretKeyCrypted), this.getPublicKey())
+  }
+
+  getPublicKey() {
+    return dotpCrypt.getPublicKeyFromPublicID(this.publicID)
   }
 
   getKeyPair() {
-    let keyPair = dotpCrypt.utils.nacl.box.keyPair.fromSecretKey(this.secretKey)
+    let keyPair = dotpCrypt.utils.nacl.box.keyPair.fromSecretKey(this.getSecretKey())
     return keyPair
   }
 
@@ -32,14 +63,27 @@ class Key {
       return false
     }
   }
+
+  update(props) {
+    props.publicID = this.publicID
+    realm.write(() => {
+      realm.create('Key', props, true);
+    });
+  }
+
+  destroy() {
+    realm.write(() => {
+      realm.delete(this);
+    });
+  }
 }
 
 Key.schema = {
   name: 'Key',
+  primaryKey: 'publicID',
   properties: {
     publicID:  'string',
-    secretKey: 'data',
-    publicKey: 'data',
+    secretKeyCrypted: 'data',
     name: 'string',
     createdAt: 'date',
   }
@@ -47,10 +91,9 @@ Key.schema = {
 
 let realm;
 exports.setupDatastore = async function() {
-  //let encryptionKeyArr = await React.NativeModules.SecureStore.getDatastoreKey();
-  let encryptionKey = new Uint8Array(64)
-  realm = exports.realm = new Realm({schema: [Key], encryptionKey: encryptionKey});
-  return true
+  let encryptionKey = new Uint8Array(await React.NativeModules.SecureStore.loadKey())
+  DataStoreKey = encryptionKey
+  realm = exports.realm = new Realm({schema: [Key]});
 }
 
 exports.decryptChallenge = function(challenge) {
@@ -70,33 +113,34 @@ exports.decryptChallenge = function(challenge) {
 }
 
 exports.destroy = function(publicID) {
-  var key = realm.objects('Key').filtered("publicID = " + publicID)
+  var key = realm.objects('Key').filtered('publicID = ' + publicID)
   realm.delete(key)
 }
 
-exports.create = async function(seed, name) {
+exports.create = function(seed, name) {
   try {
     seed = seed.replace(' ','').toUpperCase()
     let keyPair = dotpCrypt.deriveKeyPair(seed)
+    let secretKeyCrypted = encryptKey(keyPair.secretKey, keyPair.publicKey)
+    let key = null
     realm.write(() => {
-      let key = realm.create('Key', {
-        secretKey: keyPair.secretKey,
-        publicKey: keyPair.publicKey,
+      key = realm.create('Key', {
         publicID: dotpCrypt.getPublicID(keyPair.publicKey),
         name: name,
+        secretKeyCrypted: secretKeyCrypted,
         createdAt: new Date(),
       })
-      return key
     })
+    return key
   } catch (e) {
     console.log(e)
   }
 }
 
-exports.get = async function(publicID) {
-  return realm.objects('Key').filtered("publicID = " + publicID)
+exports.get = function(publicID) {
+  return realm.objects('Key').filtered('publicID = ' + publicID)
 }
 
-exports.getAll = async function() {
+exports.getAll = function() {
   return realm.objects('Key')
 }

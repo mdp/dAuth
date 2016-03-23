@@ -1,0 +1,11 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'dotp_client' do
+  pod 'Locksmith'
+end
+
+target 'dotp_clientTests' do
+  pod 'Locksmith'
+end
+

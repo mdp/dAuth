@@ -20,13 +20,12 @@ class EditKey extends React.Component {
 
   setInitialState() {
     return {
-      name: this.props.keyPair.get('name'),
+      name: this.props.keyPair.name,
     };
   }
 
   _handleUpdateKey() {
-    this.props.keyPair.set('name', this.state.name)
-    this.props.keyPair.save()
+    this.props.keyPair.update({name: this.state.name})
     this.props.navigator.pop()
   }
 
@@ -56,13 +55,12 @@ class EditKey extends React.Component {
             null,
             [
               {text: 'OK', onPress: async () => {
-                  await this.props.keyPair.destroy();
+                  this.props.keyPair.destroy();
                   this.props.navigator.popToTop();
                 }
               },
               {text: 'Cancel', onPress: () => console.log('cancel') },
-            ],
-            'default'
+            ]
           )}>
           <Text
             style={Styles.deleteBtn}>Delete</Text>

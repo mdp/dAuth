@@ -5,6 +5,7 @@
 'use strict';
 
 var React = require('react-native');
+var KeyStore = require('./app/stores/KeyStore');
 var App = require('./app/components/KeyList');
 var Decode = require('./app/components/Decode');
 var NewKey = require('./app/components/NewKey');
@@ -79,7 +80,22 @@ var NavigationBarRouteMapper = {
 
 const DEBUG_OTP = false
 var navigator = React.createClass({
+
+  getInitialState: function() {
+    return {
+      ready: false
+    }
+  },
+
+  componentWillMount: async function() {
+    let isSetup = await KeyStore.setupDatastore()
+    this.setState({ready: true})
+  },
+
   render: function() {
+    if (!this.state.ready) {
+      return false
+    }
     var initialRoute = {
       component: App,
       title: 'dAuth',
@@ -150,6 +166,5 @@ var styles = StyleSheet.create({
     fontSize: 16,
   },
 })
-
 
 AppRegistry.registerComponent('dotp_client', () => navigator);
