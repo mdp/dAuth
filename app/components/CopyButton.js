@@ -19,7 +19,7 @@ class CopyButton extends React.Component {
           React.NativeModules.Clipboard.copyStr(this.props.strToCopy)
           }
         }>
-        <Text>{this.state.copyText}</Text>
+        <Text>{this.state.buttonText}</Text>
       </TouchableHighlight>
     )
   }
