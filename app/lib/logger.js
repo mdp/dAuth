@@ -11,9 +11,9 @@ exports.info = function() {
 }
 
 exports.warn = function() {
-  console.log.apply(this, arguments)
+  console.warn.apply(this, arguments)
 }
 
-exports.fatal = function() {
-  console.log.apply(this, arguments)
+exports.error = function() {
+  console.error.apply(this, arguments)
 }

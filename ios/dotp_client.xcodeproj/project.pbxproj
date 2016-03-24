@@ -13,23 +13,24 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* dotp_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* dotp_clientTests.m */; };
+		06F76CBD19E9B89022A9D8B6 /* Pods_dotp_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F853FA95E3D3B0A7964AAE6 /* Pods_dotp_client.framework */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		503F0B441C98C658001704B4 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F0B431C98C658001704B4 /* SecureStore.swift */; };
-		503F0B641C99E48B001704B4 /* RealmReact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503F0B421C98C5DA001704B4 /* RealmReact.framework */; };
-		503F0B651C99E48B001704B4 /* RealmReact.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 503F0B421C98C5DA001704B4 /* RealmReact.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		503F0B761C9A3497001704B4 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F0B751C9A3496001704B4 /* Clipboard.swift */; };
-		503F0B781C9A34A9001704B4 /* SwiftBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 503F0B771C9A34A9001704B4 /* SwiftBridge.m */; };
-		5045A86A1C4C47B40065115A /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5045A8681C4C461A0065115A /* libRCTCamera.a */; };
-		50678C941C7FCF3C00B69B16 /* SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678C931C7FCF3C00B69B16 /* SecureRandom.swift */; };
+		50A389CF1CA3790A00457B5A /* SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A389CB1CA3790A00457B5A /* SecureRandom.swift */; };
+		50A389D01CA3790A00457B5A /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A389CC1CA3790A00457B5A /* SecureStore.swift */; };
+		50A389D11CA3790A00457B5A /* SwiftBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A389CD1CA3790A00457B5A /* SwiftBridge.m */; };
+		50A389D21CA3790A00457B5A /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A389CE1CA3790A00457B5A /* Clipboard.swift */; };
+		50A389D31CA398D200457B5A /* RealmReact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508432FB1CA3771C00AF50FE /* RealmReact.framework */; };
+		50A389D41CA398D200457B5A /* RealmReact.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 508432FB1CA3771C00AF50FE /* RealmReact.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50A389D81CA399B900457B5A /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 508432C01CA374BD00AF50FE /* libRCTCamera.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		8B8730AC5D42B842A2C04CD1 /* Pods_dotp_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D0D355189FEE8506919D9F /* Pods_dotp_client.framework */; };
-		C854649C04982F807403DF96 /* Pods_dotp_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A737C30B6BE3BA1F531267AE /* Pods_dotp_clientTests.framework */; };
+		E38CB69E744E567885671A6E /* Pods_dotp_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1DA40FFCB59D10FDB25AAD /* Pods_dotp_clientTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,54 +97,54 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
-		503F0B391C98C5DA001704B4 /* PBXContainerItemProxy */ = {
+		508432BF1CA374BD00AF50FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */;
+			containerPortal = 508432BA1CA374BD00AF50FE /* RCTCamera.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
+			remoteInfo = RCTCamera;
+		};
+		508432F21CA3771C00AF50FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F63FF2F01C16405C00B3B8E0;
 			remoteInfo = GCDWebServers;
 		};
-		503F0B3B1C98C5DA001704B4 /* PBXContainerItemProxy */ = {
+		508432F41CA3771C00AF50FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */;
+			containerPortal = 508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F63FF2B11C1241E500B3B8E0;
 			remoteInfo = "RealmJS static";
 		};
-		503F0B3D1C98C5DA001704B4 /* PBXContainerItemProxy */ = {
+		508432F61CA3771C00AF50FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */;
+			containerPortal = 508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 02B58CB11AE99CEC009B348C;
 			remoteInfo = RealmJS;
 		};
-		503F0B3F1C98C5DA001704B4 /* PBXContainerItemProxy */ = {
+		508432F81CA3771C00AF50FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */;
+			containerPortal = 508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 02B58CBC1AE99CEC009B348C;
 			remoteInfo = RealmJSTests;
 		};
-		503F0B411C98C5DA001704B4 /* PBXContainerItemProxy */ = {
+		508432FA1CA3771C00AF50FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */;
+			containerPortal = 508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 02B29A161B7CF7C9008A7E6B;
 			remoteInfo = RealmReact;
 		};
-		503F0B661C99E48B001704B4 /* PBXContainerItemProxy */ = {
+		50A389D51CA398D300457B5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */;
+			containerPortal = 508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 02B29A151B7CF7C9008A7E6B;
 			remoteInfo = RealmReact;
-		};
-		5045A8671C4C461A0065115A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5045A8631C4C461A0065115A /* RCTCamera.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
-			remoteInfo = RCTCamera;
 		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -162,13 +163,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		50678CFD1C8F8D5D00B69B16 /* Embed Frameworks */ = {
+		50A389D71CA398D300457B5A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				503F0B651C99E48B001704B4 /* RealmReact.framework in Embed Frameworks */,
+				50A389D41CA398D200457B5A /* RealmReact.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,31 +186,32 @@
 		00E356EE1AD99517003FC87E /* dotp_clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dotp_clientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* dotp_clientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dotp_clientTests.m; sourceTree = "<group>"; };
+		00FE9EAF937229EA3C5F2DF2 /* Pods-dotp_clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_clientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_clientTests/Pods-dotp_clientTests.release.xcconfig"; sourceTree = "<group>"; };
+		0E1DA40FFCB59D10FDB25AAD /* Pods_dotp_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dotp_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* dAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* dotp_client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dotp_client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = dotp_client/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = dotp_client/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = dotp_client/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = dotp_client/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = dotp_client/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		501D6D9F1C9C9B4200C0ADD9 /* dAuth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = dAuth.entitlements; path = dotp_client/dAuth.entitlements; sourceTree = "<group>"; };
-		503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RealmJS.xcodeproj; path = ../node_modules/realm/RealmJS.xcodeproj; sourceTree = "<group>"; };
-		503F0B431C98C658001704B4 /* SecureStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecureStore.swift; path = dotp_client/SecureStore.swift; sourceTree = "<group>"; };
-		503F0B751C9A3496001704B4 /* Clipboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clipboard.swift; path = dotp_client/Clipboard.swift; sourceTree = "<group>"; };
-		503F0B771C9A34A9001704B4 /* SwiftBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwiftBridge.m; path = dotp_client/SwiftBridge.m; sourceTree = "<group>"; };
-		5045A8631C4C461A0065115A /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
-		50678C931C7FCF3C00B69B16 /* SecureRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecureRandom.swift; path = dotp_client/SecureRandom.swift; sourceTree = "<group>"; };
-		50678CA11C7FD00100B69B16 /* dotp_client-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dotp_client-Bridging-Header.h"; sourceTree = "<group>"; };
-		52D0D355189FEE8506919D9F /* Pods_dotp_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dotp_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		607F81321266FB9950193790 /* Pods-dotp_clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_clientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_clientTests/Pods-dotp_clientTests.release.xcconfig"; sourceTree = "<group>"; };
+		328FC057BB233B4DB5E22671 /* Pods-dotp_client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_client/Pods-dotp_client.debug.xcconfig"; sourceTree = "<group>"; };
+		508432BA1CA374BD00AF50FE /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
+		508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RealmJS.xcodeproj; path = ../node_modules/realm/RealmJS.xcodeproj; sourceTree = "<group>"; };
+		50A389CA1CA3790A00457B5A /* dotp_client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dotp_client-Bridging-Header.h"; sourceTree = "<group>"; };
+		50A389CB1CA3790A00457B5A /* SecureRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecureRandom.swift; path = dotp_client/SecureRandom.swift; sourceTree = "<group>"; };
+		50A389CC1CA3790A00457B5A /* SecureStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecureStore.swift; path = dotp_client/SecureStore.swift; sourceTree = "<group>"; };
+		50A389CD1CA3790A00457B5A /* SwiftBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwiftBridge.m; path = dotp_client/SwiftBridge.m; sourceTree = "<group>"; };
+		50A389CE1CA3790A00457B5A /* Clipboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clipboard.swift; path = dotp_client/Clipboard.swift; sourceTree = "<group>"; };
+		50A389D91CA39DFE00457B5A /* dotp_client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = dotp_client.entitlements; path = dotp_client/dotp_client.entitlements; sourceTree = "<group>"; };
+		6BA11BBC1FDBE9C2D59A1888 /* Pods-dotp_client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_client.release.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_client/Pods-dotp_client.release.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		A737C30B6BE3BA1F531267AE /* Pods_dotp_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dotp_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8B6B656ED371DC55736037D /* Pods-dotp_client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_client/Pods-dotp_client.debug.xcconfig"; sourceTree = "<group>"; };
-		AE8343E97EAA5FD1F7BEF1CA /* Pods-dotp_client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_client.release.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_client/Pods-dotp_client.release.xcconfig"; sourceTree = "<group>"; };
-		BB40D196EB46207C13400DF7 /* Pods-dotp_clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_clientTests/Pods-dotp_clientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9F853FA95E3D3B0A7964AAE6 /* Pods_dotp_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dotp_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCA9AC7F774F3B0D5CA1DF0 /* Pods-dotp_clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dotp_clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dotp_clientTests/Pods-dotp_clientTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,7 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C854649C04982F807403DF96 /* Pods_dotp_clientTests.framework in Frameworks */,
+				E38CB69E744E567885671A6E /* Pods_dotp_clientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,9 +227,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5045A86A1C4C47B40065115A /* libRCTCamera.a in Frameworks */,
+				50A389D31CA398D200457B5A /* RealmReact.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
-				503F0B641C99E48B001704B4 /* RealmReact.framework in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
@@ -237,7 +238,8 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				8B8730AC5D42B842A2C04CD1 /* Pods_dotp_client.framework in Frameworks */,
+				06F76CBD19E9B89022A9D8B6 /* Pods_dotp_client.framework in Frameworks */,
+				50A389D81CA399B900457B5A /* libRCTCamera.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,18 +322,19 @@
 		13B07FAE1A68108700A75B9A /* dotp_client */ = {
 			isa = PBXGroup;
 			children = (
-				501D6D9F1C9C9B4200C0ADD9 /* dAuth.entitlements */,
-				50678CA11C7FD00100B69B16 /* dotp_client-Bridging-Header.h */,
-				50678C931C7FCF3C00B69B16 /* SecureRandom.swift */,
+				50A389D91CA39DFE00457B5A /* dotp_client.entitlements */,
+				50A389CB1CA3790A00457B5A /* SecureRandom.swift */,
+				50A389CC1CA3790A00457B5A /* SecureStore.swift */,
+				50A389CD1CA3790A00457B5A /* SwiftBridge.m */,
+				50A389CE1CA3790A00457B5A /* Clipboard.swift */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				503F0B431C98C658001704B4 /* SecureStore.swift */,
-				503F0B751C9A3496001704B4 /* Clipboard.swift */,
-				503F0B771C9A34A9001704B4 /* SwiftBridge.m */,
+				50A389CA1CA3790A00457B5A /* dotp_client-Bridging-Header.h */,
 			);
 			name = dotp_client;
 			sourceTree = "<group>";
@@ -344,35 +347,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		503F0B311C98C5DA001704B4 /* Products */ = {
+		508432BB1CA374BD00AF50FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				503F0B3A1C98C5DA001704B4 /* libGCDWebServers.a */,
-				503F0B3C1C98C5DA001704B4 /* libRealmJS.a */,
-				503F0B3E1C98C5DA001704B4 /* RealmJS.framework */,
-				503F0B401C98C5DA001704B4 /* RealmJSTests.xctest */,
-				503F0B421C98C5DA001704B4 /* RealmReact.framework */,
+				508432C01CA374BD00AF50FE /* libRCTCamera.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5045A8641C4C461A0065115A /* Products */ = {
+		508432EA1CA3771C00AF50FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5045A8681C4C461A0065115A /* libRCTCamera.a */,
+				508432F31CA3771C00AF50FE /* libGCDWebServers.a */,
+				508432F51CA3771C00AF50FE /* libRealmJS.a */,
+				508432F71CA3771C00AF50FE /* RealmJS.framework */,
+				508432F91CA3771C00AF50FE /* RealmJSTests.xctest */,
+				508432FB1CA3771C00AF50FE /* RealmReact.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		6D196B96AAD260713864586D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A8B6B656ED371DC55736037D /* Pods-dotp_client.debug.xcconfig */,
-				AE8343E97EAA5FD1F7BEF1CA /* Pods-dotp_client.release.xcconfig */,
-				BB40D196EB46207C13400DF7 /* Pods-dotp_clientTests.debug.xcconfig */,
-				607F81321266FB9950193790 /* Pods-dotp_clientTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -383,11 +375,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7ED817C2FF79260E1C65B273 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F853FA95E3D3B0A7964AAE6 /* Pods_dotp_client.framework */,
+				0E1DA40FFCB59D10FDB25AAD /* Pods_dotp_clientTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */,
-				5045A8631C4C461A0065115A /* RCTCamera.xcodeproj */,
+				508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */,
+				508432BA1CA374BD00AF50FE /* RCTCamera.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -417,8 +418,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* dotp_clientTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				6D196B96AAD260713864586D /* Pods */,
-				B714682AB4C7355543A962AA /* Frameworks */,
+				E8162250B5251995B003945D /* Pods */,
+				7ED817C2FF79260E1C65B273 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -427,19 +428,21 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* dAuth.app */,
+				13B07F961A680F5B00A75B9A /* dotp_client.app */,
 				00E356EE1AD99517003FC87E /* dotp_clientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B714682AB4C7355543A962AA /* Frameworks */ = {
+		E8162250B5251995B003945D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				52D0D355189FEE8506919D9F /* Pods_dotp_client.framework */,
-				A737C30B6BE3BA1F531267AE /* Pods_dotp_clientTests.framework */,
+				328FC057BB233B4DB5E22671 /* Pods-dotp_client.debug.xcconfig */,
+				6BA11BBC1FDBE9C2D59A1888 /* Pods-dotp_client.release.xcconfig */,
+				CFCA9AC7F774F3B0D5CA1DF0 /* Pods-dotp_clientTests.debug.xcconfig */,
+				00FE9EAF937229EA3C5F2DF2 /* Pods-dotp_clientTests.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,12 +452,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "dotp_clientTests" */;
 			buildPhases = (
-				6547DC267E0B3252ADABFE7E /* Check Pods Manifest.lock */,
+				30A3104758FE8039F057C4B3 /* Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				FC0798BFDAF7FF8D6C7FEAD1 /* Embed Pods Frameworks */,
-				76608C30EFF5EC7F1ED263BB /* Copy Pods Resources */,
+				E3413EF5B612CE444348F5CC /* Embed Pods Frameworks */,
+				06664CF71D2E8D85E8A7218D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -470,23 +473,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "dotp_client" */;
 			buildPhases = (
-				05DE87286F26466FDDA0E8EA /* Check Pods Manifest.lock */,
+				74402B92F22F8FFC155813C2 /* Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				50678CFD1C8F8D5D00B69B16 /* Embed Frameworks */,
-				2F00741689C5ABC3BA56FBE1 /* Embed Pods Frameworks */,
-				CE3B69539C7C9F7E962722A8 /* Copy Pods Resources */,
+				0546124795A0576E8C27C96A /* Embed Pods Frameworks */,
+				B9E32CB06A57E0E8F177538D /* Copy Pods Resources */,
+				50A389D71CA398D300457B5A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				503F0B671C99E48B001704B4 /* PBXTargetDependency */,
+				50A389D61CA398D300457B5A /* PBXTargetDependency */,
 			);
 			name = dotp_client;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* dAuth.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* dotp_client.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -495,7 +498,8 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -529,8 +533,8 @@
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
-					ProductGroup = 5045A8641C4C461A0065115A /* Products */;
-					ProjectRef = 5045A8631C4C461A0065115A /* RCTCamera.xcodeproj */;
+					ProductGroup = 508432BB1CA374BD00AF50FE /* Products */;
+					ProjectRef = 508432BA1CA374BD00AF50FE /* RCTCamera.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -569,8 +573,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 503F0B311C98C5DA001704B4 /* Products */;
-					ProjectRef = 503F0B301C98C5DA001704B4 /* RealmJS.xcodeproj */;
+					ProductGroup = 508432EA1CA3771C00AF50FE /* Products */;
+					ProjectRef = 508432E91CA3771C00AF50FE /* RealmJS.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -638,46 +642,46 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		503F0B3A1C98C5DA001704B4 /* libGCDWebServers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGCDWebServers.a;
-			remoteRef = 503F0B391C98C5DA001704B4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		503F0B3C1C98C5DA001704B4 /* libRealmJS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRealmJS.a;
-			remoteRef = 503F0B3B1C98C5DA001704B4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		503F0B3E1C98C5DA001704B4 /* RealmJS.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RealmJS.framework;
-			remoteRef = 503F0B3D1C98C5DA001704B4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		503F0B401C98C5DA001704B4 /* RealmJSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RealmJSTests.xctest;
-			remoteRef = 503F0B3F1C98C5DA001704B4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		503F0B421C98C5DA001704B4 /* RealmReact.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RealmReact.framework;
-			remoteRef = 503F0B411C98C5DA001704B4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5045A8681C4C461A0065115A /* libRCTCamera.a */ = {
+		508432C01CA374BD00AF50FE /* libRCTCamera.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTCamera.a;
-			remoteRef = 5045A8671C4C461A0065115A /* PBXContainerItemProxy */;
+			remoteRef = 508432BF1CA374BD00AF50FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508432F31CA3771C00AF50FE /* libGCDWebServers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGCDWebServers.a;
+			remoteRef = 508432F21CA3771C00AF50FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508432F51CA3771C00AF50FE /* libRealmJS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRealmJS.a;
+			remoteRef = 508432F41CA3771C00AF50FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508432F71CA3771C00AF50FE /* RealmJS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RealmJS.framework;
+			remoteRef = 508432F61CA3771C00AF50FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508432F91CA3771C00AF50FE /* RealmJSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RealmJSTests.xctest;
+			remoteRef = 508432F81CA3771C00AF50FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508432FB1CA3771C00AF50FE /* RealmReact.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RealmReact.framework;
+			remoteRef = 508432FA1CA3771C00AF50FE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -709,6 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,24 +732,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "../node_modules/react-native/packager/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
-		05DE87286F26466FDDA0E8EA /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2F00741689C5ABC3BA56FBE1 /* Embed Pods Frameworks */ = {
+		0546124795A0576E8C27C96A /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -759,22 +749,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dotp_client/Pods-dotp_client-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6547DC267E0B3252ADABFE7E /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		76608C30EFF5EC7F1ED263BB /* Copy Pods Resources */ = {
+		06664CF71D2E8D85E8A7218D /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -789,7 +764,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dotp_clientTests/Pods-dotp_clientTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CE3B69539C7C9F7E962722A8 /* Copy Pods Resources */ = {
+		30A3104758FE8039F057C4B3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		74402B92F22F8FFC155813C2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B9E32CB06A57E0E8F177538D /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -804,7 +809,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dotp_client/Pods-dotp_client-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FC0798BFDAF7FF8D6C7FEAD1 /* Embed Pods Frameworks */ = {
+		E3413EF5B612CE444348F5CC /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -834,12 +839,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50678C941C7FCF3C00B69B16 /* SecureRandom.swift in Sources */,
-				503F0B781C9A34A9001704B4 /* SwiftBridge.m in Sources */,
+				50A389D21CA3790A00457B5A /* Clipboard.swift in Sources */,
+				50A389D01CA3790A00457B5A /* SecureStore.swift in Sources */,
+				50A389D11CA3790A00457B5A /* SwiftBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				503F0B761C9A3497001704B4 /* Clipboard.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				503F0B441C98C658001704B4 /* SecureStore.swift in Sources */,
+				50A389CF1CA3790A00457B5A /* SecureRandom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,17 +856,29 @@
 			target = 13B07F861A680F5B00A75B9A /* dotp_client */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
-		503F0B671C99E48B001704B4 /* PBXTargetDependency */ = {
+		50A389D61CA398D300457B5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RealmReact;
-			targetProxy = 503F0B661C99E48B001704B4 /* PBXContainerItemProxy */;
+			targetProxy = 50A389D51CA398D300457B5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13B07FB21A68108700A75B9A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			path = dotp_client;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB40D196EB46207C13400DF7 /* Pods-dotp_clientTests.debug.xcconfig */;
+			baseConfigurationReference = CFCA9AC7F774F3B0D5CA1DF0 /* Pods-dotp_clientTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -875,7 +892,6 @@
 				INFOPLIST_FILE = dotp_clientTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dotp_client.app/dotp_client";
 			};
@@ -883,7 +899,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 607F81321266FB9950193790 /* Pods-dotp_clientTests.release.xcconfig */;
+			baseConfigurationReference = 00FE9EAF937229EA3C5F2DF2 /* Pods-dotp_clientTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -894,7 +910,6 @@
 				INFOPLIST_FILE = dotp_clientTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dotp_client.app/dotp_client";
 			};
@@ -902,13 +917,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8B6B656ED371DC55736037D /* Pods-dotp_client.debug.xcconfig */;
+			baseConfigurationReference = 328FC057BB233B4DB5E22671 /* Pods-dotp_client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = dotp_client/dAuth.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Trailing Space LLC (9ZZZ6JZWHG)";
+				CODE_SIGN_ENTITLEMENTS = dotp_client/dotp_client.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -924,23 +939,21 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
-				PRODUCT_NAME = dAuth;
-				PROVISIONING_PROFILE = "e2afa2b4-da7c-4018-a019-fc2c098461d3";
+				PRODUCT_NAME = dotp_client;
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE8343E97EAA5FD1F7BEF1CA /* Pods-dotp_client.release.xcconfig */;
+			baseConfigurationReference = 6BA11BBC1FDBE9C2D59A1888 /* Pods-dotp_client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = dotp_client/dAuth.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Trailing Space LLC (9ZZZ6JZWHG)";
+				CODE_SIGN_ENTITLEMENTS = dotp_client/dotp_client.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -955,10 +968,8 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
-				PRODUCT_NAME = dAuth;
-				PROVISIONING_PROFILE = "e2afa2b4-da7c-4018-a019-fc2c098461d3";
+				PRODUCT_NAME = dotp_client;
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -982,7 +993,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;

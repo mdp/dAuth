@@ -1,4 +1,4 @@
-React = require('react-native');
+var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
@@ -10,7 +10,7 @@ var Camera = require('react-native-camera');
 var Decode = require('./Decode');
 var logger = require('../lib/logger')
 
-const Scan = React.createClass({
+var Scan = React.createClass({
 
   getInitialState() {
     return {

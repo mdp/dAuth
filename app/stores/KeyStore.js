@@ -1,3 +1,4 @@
+var React = require('react-native');
 let dotpCrypt = require('dotp-crypt')
 let Buffer = require('buffer').Buffer
 let Realm = require('realm') // Need to use the latest to get encryption
@@ -51,7 +52,7 @@ class Key {
   decrypt(challenge){
     let keyPair = this.getKeyPair()
     try {
-      decoded = dotpCrypt.decryptChallenge(challenge, keyPair)
+      var decoded = dotpCrypt.decryptChallenge(challenge, keyPair)
       if (!decoded) { return false }
       return {
         key: this,

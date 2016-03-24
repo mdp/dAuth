@@ -8,7 +8,8 @@
   "dependencies": {
     "buffer": "^3.5.0",
     "dotp-crypt": "^1.0.0",
-    "react-native": "^0.21.0",
+    "react": "^0.14.7",
+    "react-native": "^0.22.2",
     "react-native-camera": "^0.3.8",
     "realm": "^0.10.0"
   },

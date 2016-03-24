@@ -1,5 +1,3 @@
-var cssVar = require('cssVar');
-
 module.exports = {
   primary: '#673AB7',
   lightA: '#D1C4E9',

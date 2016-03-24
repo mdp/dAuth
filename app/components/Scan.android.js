@@ -1,4 +1,4 @@
-React = require('react-native');
+var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
@@ -11,7 +11,7 @@ var QRCode = React.NativeModules.QRCode;
 var DeviceEventEmitter = React.DeviceEventEmitter;
 
 
-const Scan = React.createClass({
+var Scan = React.createClass({
 
   getInitialState() {
     return {

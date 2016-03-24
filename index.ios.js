@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-'use strict';
-
 var React = require('react-native');
 var KeyStore = require('./app/stores/KeyStore');
 var App = require('./app/components/KeyList');
@@ -19,7 +13,6 @@ var {
   TouchableOpacity,
 } = React;
 
-var cssVar = require('cssVar');
 var Colours = require('./app/config/Colours');
 
 var NavigationBarRouteMapper = {
@@ -79,7 +72,7 @@ var NavigationBarRouteMapper = {
 };
 
 const DEBUG_OTP = false
-var navigator = React.createClass({
+var navWrapper = React.createClass({
 
   getInitialState: function() {
     return {
@@ -167,4 +160,4 @@ var styles = StyleSheet.create({
   },
 })
 
-AppRegistry.registerComponent('dotp_client', () => navigator);
+AppRegistry.registerComponent('dotp_client', () => navWrapper);

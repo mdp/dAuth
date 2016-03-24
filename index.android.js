@@ -18,10 +18,7 @@ var {
   BackAndroid
 } = React;
 
-var cssVar = require('cssVar');
 var Colours = require('./app/config/Colours');
-
-
 
 var NavigationBarRouteMapper = {
 
