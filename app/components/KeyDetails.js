@@ -9,6 +9,7 @@ let {
   WebView,
   InteractionManager,
   TouchableHighlight,
+  Linking,
   AlertIOS,
 } = React;
 let Colours = require('../config/Colours');
@@ -17,6 +18,7 @@ let Scan = require('./Scan');
 let NewKey = require('./NewKey');
 let EditKey = require('./EditKey');
 let QRCodeJS = require('../lib/qrcode-inject.js');
+let Button = require('./Button');
 let CopyButton = require('./CopyButton');
 let utils = require('../lib/utils');
 let Key = require('../stores/KeyStore').Key
@@ -81,11 +83,26 @@ class KeyDetails extends React.Component {
             <View style={styles.details}>
               <View style={styles.header}>
                 <Text style={styles.heading}>Public ID - </Text>
-                <CopyButton strToCopy={this.props.keyPair.getPublicID()} />
               </View>
               <Text style={styles.publicID}>{utils.spaceStr(this.props.keyPair.getPublicID())} </Text>
               <Text style={styles.heading}>Created At: <Text style={styles.publicID}>{ createdAt } </Text></Text>
             </View>
+        </View>
+        <View style={styles.controls}>
+          <View style={styles.row}>
+            <CopyButton
+              strToCopy={this.props.keyPair.getPublicID()}
+              beforeCopyText='Copy PublicID'
+              afterCopyText='Copied PublicID'
+              />
+          </View>
+          <View style={styles.row}>
+            <Button text='Test Key'
+              onPress={ () => {
+                Linking.openURL('https://mdp.github.io/dotp/demo/#/'+this.props.keyPair.getPublicID())
+                }
+              }/>
+          </View>
         </View>
       </ScrollView>
     );
@@ -111,9 +128,21 @@ KeyDetails.rightButton = {
 let styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 20,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: Colours.background,
-    padding: 10
+  },
+  controls: {
+    flexDirection: 'column',
+    flex: 1,
+    marginLeft: 50,
+    marginRight: 50,
+  },
+  row: {
+    flexDirection: 'row',
+    flex: 1,
+    marginTop:10,
   },
   details: {
     paddingTop: 10,

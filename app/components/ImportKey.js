@@ -14,6 +14,7 @@ let Scan = require('./Scan');
 let Styles = require('../config/Styles');
 let Colours = require('../config/Colours');
 let Decode = require('./Decode');
+let Button = require('./Button');
 let KeyDetails = require('./KeyDetails');
 let KeyStore = require('../stores/KeyStore');
 
@@ -60,49 +61,71 @@ class ImportKey extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-        style={{height: 40,
-          borderColor: 'gray',
-          fontSize: 30,
-          borderWidth: 1,
-          marginVertical: 10,
-          textAlign: 'center',
-          }}
-        placeholder='Key Name'
-        onChangeText={(name) => this.setState({name})}
-        value={this.state.name}
-        />
-        <TextInput
-        style={{height: 40,
-          borderColor: 'gray',
-          fontSize: 30,
-          borderWidth: 1,
-          marginVertical: 10,
-          textAlign: 'center',
-          }}
-        placeholder='Backup Seed'
-        onChangeText={this._updateSeed.bind(this)}
-        value={this.state.seed}
-        />
-        <TouchableHighlight onPress={() => this._handleAddKey()}>
-          <Text style={Styles.btn}>
-            Create Key
-          </Text>
-        </TouchableHighlight>
+        <View style={styles.top}>
+          <TextInput
+          style={{height: 40,
+            borderColor: 'gray',
+            fontSize: 30,
+            borderWidth: 1,
+            marginVertical: 10,
+            paddingLeft: 10,
+            }}
+          placeholder='Key Name'
+          onChangeText={(name) => this.setState({name})}
+          value={this.state.name}
+          />
+          <TextInput
+          style={{height: 40,
+            borderColor: 'gray',
+            fontSize: 30,
+            borderWidth: 1,
+            marginVertical: 10,
+            paddingLeft: 10,
+            }}
+          placeholder='Backup Seed'
+          onChangeText={this._updateSeed.bind(this)}
+          value={this.state.seed}
+          />
+        </View>
+        <View style={styles.bottom}>
+          <View style={styles.controls}>
+            <View style={styles.row}>
+              <Button text='Create Key'
+                onPress={() => this._handleAddKey()}
+              />
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
 }
 
 let styles = StyleSheet.create({
-  container: {
-    padding: 20,
+  top: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  bottom: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    padding: 40
+  },
+  controls: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    flex:1,
+    marginTop:10,
   },
 });
 
 module.exports = ImportKey
-

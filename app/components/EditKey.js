@@ -9,6 +9,7 @@ let {
   TouchableHighlight,
   AlertIOS,
 } = React;
+let Button = require('./Button');
 let Styles = require('../config/Styles');
 let logger = require('../lib/logger')
 
@@ -33,52 +34,73 @@ class EditKey extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-        style={{height: 40,
-          borderColor: 'gray',
-          fontSize: 30,
-          borderWidth: 1,
-          marginVertical: 10,
-          textAlign: 'center',
-          }}
-        placeholder='Key Name'
-        onChangeText={(name) => this.setState({name})}
-        value={this.state.name}
-        />
-        <TouchableHighlight onPress={() => this._handleUpdateKey()}>
-          <Text style={Styles.btn}>
-            Save
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => AlertIOS.alert(
-            'Are you sure you want to delete this key?',
-            null,
-            [
-              {text: 'OK', onPress: async () => {
-                  this.props.keyPair.destroy();
-                  this.props.navigator.popToTop();
-                }
-              },
-              {text: 'Cancel', onPress: () => logger.info('cancel') },
-            ]
-          )}>
-          <Text
-            style={Styles.deleteBtn}>Delete</Text>
-        </TouchableHighlight>
-
+        <View style={styles.top}>
+          <TextInput
+          style={{height: 40,
+            borderColor: 'gray',
+            fontSize: 30,
+            paddingLeft: 10,
+            borderWidth: 1,
+            marginVertical: 10,
+            }}
+          placeholder='Key Name'
+          onChangeText={(name) => this.setState({name})}
+          value={this.state.name}
+          />
+        </View>
+        <View style={styles.bottom}>
+          <View style={styles.controls}>
+            <View style={styles.row}>
+              <Button text='Save'
+                onPress={() => this._handleUpdateKey()}
+              />
+            </View>
+            <View style={styles.row}>
+              <Button text='Delete'
+                onPress={() => AlertIOS.alert(
+                'Are you sure you want to delete this key?',
+                null,
+                [
+                  {text: 'OK', onPress: async () => {
+                      this.props.keyPair.destroy();
+                      this.props.navigator.popToTop();
+                    }
+                  },
+                  {text: 'Cancel', onPress: () => logger.info('cancel') },
+                ])}
+                />
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
 }
 
 let styles = StyleSheet.create({
-  container: {
-    padding: 20,
+  top: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  bottom: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    padding: 40
+  },
+  controls: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    flex:1,
+    marginTop:10,
   },
 });
 

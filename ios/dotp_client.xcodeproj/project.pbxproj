@@ -29,6 +29,7 @@
 		50A389D31CA398D200457B5A /* RealmReact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508432FB1CA3771C00AF50FE /* RealmReact.framework */; };
 		50A389D41CA398D200457B5A /* RealmReact.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 508432FB1CA3771C00AF50FE /* RealmReact.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50A389D81CA399B900457B5A /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 508432C01CA374BD00AF50FE /* libRCTCamera.a */; };
+		50A389DA1CA3A9E400457B5A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		E38CB69E744E567885671A6E /* Pods_dotp_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1DA40FFCB59D10FDB25AAD /* Pods_dotp_clientTests.framework */; };
 /* End PBXBuildFile section */
@@ -219,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A389DA1CA3A9E400457B5A /* libReact.a in Frameworks */,
 				E38CB69E744E567885671A6E /* Pods_dotp_clientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -925,6 +927,7 @@
 				CODE_SIGN_ENTITLEMENTS = dotp_client/dotp_client.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -940,6 +943,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
 				PRODUCT_NAME = dotp_client;
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -954,6 +958,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = dotp_client/dotp_client.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -969,6 +976,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = space.atrailing.dAuth;
 				PRODUCT_NAME = dotp_client;
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "dotp_client-Bridging-Header.h";
 			};
 			name = Release;

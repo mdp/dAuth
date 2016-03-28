@@ -56,23 +56,23 @@ var navigator = React.createClass({
   currentRoute: null,
   navigator: null,
   componentWillMount: function(){
-    console.log("dAuth: GoBackListener")
+    console.log('dAuth: GoBackListener')
     BackAndroid.addEventListener('hardwareBackPress', () => {
-      console.log("dAuth: GoBack")
+      console.log('dAuth: GoBack')
       if (this.navigator && this.currentRoute) {
         if (this.currentRoute.popToTop) {
-          console.log("dAuth: Current route PopToTop")
+          console.log('dAuth: Current route PopToTop')
           this.navigator.popToTop()
           return true;
         } else if (this.currentRoute.navigateBack) {
-          console.log("dAuth: Current route NavBack")
+          console.log('dAuth: Current route NavBack')
           this.navigator.pop()
           return true;
         }
-        console.log("dAuth: Current route Exit")
+        console.log('dAuth: Current route Exit')
         return false;
       } else {
-        console.log("dAuth: Exit")
+        console.log('dAuth: Exit')
         return false;
       }
     });

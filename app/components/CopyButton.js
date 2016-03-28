@@ -1,4 +1,5 @@
 let React = require('react-native');
+let Button = require('./Button')
 let {
   Text,
   TouchableHighlight,
@@ -8,21 +9,27 @@ class CopyButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      buttonText: 'Copy'
+      isCopied: false
     }
   }
   render() {
+    let buttonText = this.props.beforeCopyText
+    if (this.state.isCopied) {
+      buttonText = this.props.afterCopyText
+    }
     return (
-      <TouchableHighlight
+      <Button
+        text={buttonText}
         onPress={ () => {
-          this.setState({buttonText: 'Copied'})
+          this.setState({isCopied: true})
           React.NativeModules.Clipboard.copyStr(this.props.strToCopy)
           }
-        }>
-        <Text>{this.state.buttonText}</Text>
-      </TouchableHighlight>
+        }
+      />
     )
   }
 }
+
+CopyButton.defaultProps = { beforeCopyText: 'Copy', afterCopyText: 'Copied' };
 
 module.exports = CopyButton

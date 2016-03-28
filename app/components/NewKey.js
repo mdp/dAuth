@@ -2,6 +2,7 @@ let React = require('react-native');
 let KeyStore = require('../stores/KeyStore');
 let NewKeyConfirm = require('./NewKeyConfirm');
 let ImportKey = require('./ImportKey');
+let Button = require('./Button');
 let Styles = require('../config/Styles');
 let {
   AppRegistry,
@@ -68,27 +69,34 @@ class NewKey extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-        style={{height: 40,
-          borderColor: 'gray',
-          fontSize: 30,
-          borderWidth: 1,
-          marginVertical: 10,
-          }}
-        placeholder='Key Name'
-        onChangeText={(name) => this.setState({name})}
-        value={this.state.name}
-        />
-        <TouchableHighlight onPress={() => this._handleAddKey()}>
-          <Text style={Styles.btn}>
-            Create Key
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => this._handleImportKey()}>
-          <Text style={Styles.btn}>
-            Import From Backup
-          </Text>
-        </TouchableHighlight>
+        <View style={styles.top}>
+          <TextInput
+          style={{height: 40,
+            borderColor: 'gray',
+            fontSize: 30,
+            paddingLeft: 10,
+            borderWidth: 1,
+            marginVertical: 10,
+            }}
+          placeholder='Key Name'
+          onChangeText={(name) => this.setState({name})}
+          value={this.state.name}
+          />
+        </View>
+        <View style={styles.bottom}>
+          <View style={styles.controls}>
+            <View style={styles.row}>
+              <Button text='Create Key'
+                onPress={() => this._handleAddKey()}
+              />
+            </View>
+            <View style={styles.row}>
+              <Button text='Import From Backup'
+                onPress={() => this._handleImportKey()}
+              />
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
@@ -96,12 +104,29 @@ class NewKey extends React.Component {
 
 
 let styles = StyleSheet.create({
-  container: {
-    padding: 20,
+  top: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  bottom: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    padding: 40
+  },
+  controls: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    flex:1,
+    marginTop:10,
   },
 });
 
