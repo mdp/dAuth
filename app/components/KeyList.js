@@ -5,6 +5,7 @@ let {
   StyleSheet,
   Text,
   Linking,
+  Platform,
   View,
   ListView,
   TouchableHighlight,
@@ -57,11 +58,15 @@ class KeyList extends React.Component {
   }
 
   componentDidMount() {
-    Linking.addEventListener('url', this._handleOpenURL.bind(this));
+    if (Platform.OS === 'ios') {
+      Linking.addEventListener('url', this._handleOpenURL.bind(this));
+    }
   }
 
   componentWillUnmount() {
-    Linking.removeEventListener('url', this._handleOpenURL.bind(this));
+    if (Platform.OS === 'ios') {
+      Linking.removeEventListener('url', this._handleOpenURL.bind(this));
+    }
   }
 
   _handleOpenURL(event) {

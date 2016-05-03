@@ -8,7 +8,6 @@ var {
 } = React;
 var Decode = require('./Decode');
 var QRCode = React.NativeModules.QRCode;
-var DeviceEventEmitter = React.DeviceEventEmitter;
 
 
 var Scan = React.createClass({
@@ -19,8 +18,9 @@ var Scan = React.createClass({
     }
   },
 
-  componentWillMount() {
-    DeviceEventEmitter.addListener('qrScan', (result) =>{
+  componentDidMount() {
+    QRCode.scan().then((result) =>{
+      console.log('QRRESULT', result)
       this.props.navigator.push({
         title: 'Decoded Challenge',
         component: Decode,
@@ -29,20 +29,14 @@ var Scan = React.createClass({
           challenge: result
         }
       })
-    })
-    DeviceEventEmitter.addListener('qrScanCancel', (result) =>{
+    }).catch((err) =>{
       this.props.navigator.pop()
     })
-  },
-
-  componentDidMount() {
-    QRCode.scan()
   },
 
   render() {
     return (
       <Text>
-        Scan
       </Text>
     );
   },

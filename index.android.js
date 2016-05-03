@@ -6,6 +6,7 @@
 
 var React = require('react-native');
 var App = require('./app/components/KeyList');
+var KeyStore = require('./app/stores/KeyStore');
 var NewKey = require('./app/components/NewKey');
 var {
   Navigator,
@@ -55,8 +56,15 @@ var NavigationBarRouteMapper = {
 var navigator = React.createClass({
   currentRoute: null,
   navigator: null,
-  componentWillMount: function(){
+  getInitialState: function() {
+    return {
+      ready: false
+    }
+  },
+  componentWillMount: async function(){
     console.log('dAuth: GoBackListener')
+    let isSetup = await KeyStore.setupDatastore()
+    this.setState({ready: true})
     BackAndroid.addEventListener('hardwareBackPress', () => {
       console.log('dAuth: GoBack')
       if (this.navigator && this.currentRoute) {
@@ -78,6 +86,9 @@ var navigator = React.createClass({
     });
   },
   render: function() {
+    if (!this.state.ready) {
+      return false
+    }
     return (
       <Navigator
         initialRoute={{
