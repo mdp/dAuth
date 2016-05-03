@@ -1,6 +1,8 @@
 package com.dotp_client;
 
 import com.facebook.react.ReactActivity;
+import io.realm.react.RealmReactPackage;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
@@ -34,7 +36,9 @@ public class MainActivity extends ReactActivity {
     @Override
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-            new MainReactPackage()
+            new MainReactPackage(),
+            new RealmReactPackage(),
+            new RCTCameraPackage()
         );
     }
 }
