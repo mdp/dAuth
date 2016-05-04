@@ -1,4 +1,6 @@
-package com.dotp_client;
+package space.atrailing.dauth;
+
+import android.app.Activity;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -10,14 +12,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SecureStorePackage implements ReactPackage {
+public class QRCodeScanPackage implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
-        modules.add(new SecureStoreModule(reactContext));
+        modules.add(new QRCodeScanModule(reactContext));
 
         return modules;
     }
@@ -33,4 +35,3 @@ public class SecureStorePackage implements ReactPackage {
     }
 
 }
-

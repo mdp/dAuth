@@ -1,4 +1,4 @@
-package com.dotp_client;
+package space.atrailing.dauth;
 
 
 import com.facebook.react.bridge.Arguments;
