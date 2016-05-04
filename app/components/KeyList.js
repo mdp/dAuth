@@ -108,6 +108,7 @@ class KeyList extends React.Component {
         <ListView
           style={styles.listview}
           dataSource={this.state.dataSource}
+          enableEmptySections={true}
           renderRow={this._renderRow.bind(this)}
         />
         <View style={styles.buttonRow}>
@@ -129,7 +130,7 @@ class KeyList extends React.Component {
       props: {keyPair: keyPair},
     });
   }
-  _renderRow(rowData: object) {
+  _renderRow(rowData: object, sectionID: number, rowID: number) {
     return (
         <TouchableHighlight onPress={() => this._pressRow(rowData)}>
           <View style={styles.row}>

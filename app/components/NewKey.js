@@ -54,6 +54,7 @@ class NewKey extends React.Component {
   }
 
   _handleAddKey() {
+    this.refs.textInput.blur()
     let seed = this.state.seed
     KeyStore.create(seed, this.state.name)
     this.props.navigator.push({
@@ -71,15 +72,10 @@ class NewKey extends React.Component {
       <View style={styles.container}>
         <View style={styles.top}>
           <TextInput
-          style={{height: 40,
-            borderColor: 'gray',
-            fontSize: 30,
-            paddingLeft: 10,
-            borderWidth: 1,
-            marginVertical: 10,
-            }}
+          style={Styles.input}
           placeholder='Key Name'
           onChangeText={(name) => this.setState({name})}
+          ref='textInput'
           value={this.state.name}
           />
         </View>

@@ -24,7 +24,11 @@ var Colours = require('./app/config/Colours');
 var NavigationBarRouteMapper = {
 
   LeftButton: function(route, navigator, index, navState) {
-      return null;
+    return (
+      <Text style={[styles.navBarText, styles.navBarTitleText]}>
+        {route.title}
+      </Text>
+    );
   },
 
   RightButton: function(route, navigator, index, navState) {
@@ -44,11 +48,7 @@ var NavigationBarRouteMapper = {
   },
 
   Title: function(route, navigator, index, navState) {
-    return (
-      <Text style={[styles.navBarText, styles.navBarTitleText]}>
-        {route.title}
-      </Text>
-    );
+      return false;
   },
 
 };
@@ -121,7 +121,7 @@ var navigator = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 64,
+    paddingTop: 50,
     backgroundColor: Colours.background,
   },
   navBar: {
@@ -133,17 +133,12 @@ var styles = StyleSheet.create({
   navBarTitleText: {
     color: '#DDDDDD',
     fontWeight: '500',
-    marginVertical: 9,
+    marginVertical: 18,
+    marginLeft:10,
   },
   navBtnRight: {
-    padding: 3,
-    marginRight: 10,
-    marginTop: 7,
-  },
-  navBtnLeft: {
-    padding: 3,
-    marginLeft: 10,
-    marginTop: 7,
+    marginRight: 15,
+    marginVertical: 13,
   },
   navBarButtonText: {
     color: '#DDDDDD',

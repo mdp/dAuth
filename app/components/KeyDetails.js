@@ -74,7 +74,7 @@ class KeyDetails extends React.Component {
     let createdAt = `${d.getFullYear()}.${utils.zeroPad(d.getMonth()+1,2)}.${d.getDate()} ${d.getHours()}:${d.getMinutes()}`
     // 2016.01.26 15:45
     return (
-      <ScrollView>
+      <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
             <Text style={styles.keyName}>{this.props.keyPair.name}</Text>
             <View style={styles.qrWrapper}>
@@ -126,6 +126,8 @@ KeyDetails.rightButton = {
 }
 
 let styles = StyleSheet.create({
+  scrollView: {
+  },
   container: {
     flex: 1,
     marginTop: 20,
@@ -138,6 +140,7 @@ let styles = StyleSheet.create({
     flex: 1,
     marginLeft: 50,
     marginRight: 50,
+    paddingBottom: 20,
   },
   row: {
     flexDirection: 'row',

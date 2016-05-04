@@ -18,5 +18,13 @@ module.exports = {
     borderColor: '#673AB7',
     color: 'red',
     borderRadius: 7,
+  },
+  input: {
+    height: 55,
+    borderColor: 'gray',
+    fontSize: 30,
+    borderWidth: 1,
+    marginVertical: 10,
+    paddingLeft: 10,
   }
 }

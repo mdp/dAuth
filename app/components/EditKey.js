@@ -7,7 +7,7 @@ let {
   View,
   TextInput,
   TouchableHighlight,
-  AlertIOS,
+  Alert,
 } = React;
 let Button = require('./Button');
 let Styles = require('../config/Styles');
@@ -36,13 +36,7 @@ class EditKey extends React.Component {
       <View style={styles.container}>
         <View style={styles.top}>
           <TextInput
-          style={{height: 40,
-            borderColor: 'gray',
-            fontSize: 30,
-            paddingLeft: 10,
-            borderWidth: 1,
-            marginVertical: 10,
-            }}
+          style={Styles.input}
           placeholder='Key Name'
           onChangeText={(name) => this.setState({name})}
           value={this.state.name}
@@ -57,7 +51,7 @@ class EditKey extends React.Component {
             </View>
             <View style={styles.row}>
               <Button text='Delete'
-                onPress={() => AlertIOS.alert(
+                onPress={() => Alert.alert(
                 'Are you sure you want to delete this key?',
                 null,
                 [
@@ -66,7 +60,7 @@ class EditKey extends React.Component {
                       this.props.navigator.popToTop();
                     }
                   },
-                  {text: 'Cancel', onPress: () => logger.info('cancel') },
+                  {text: 'Cancel', style:'cancel', onPress: () => logger.info('cancel') },
                 ])}
                 />
             </View>

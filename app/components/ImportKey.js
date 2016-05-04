@@ -48,8 +48,15 @@ class ImportKey extends React.Component {
   }
 
   _updateSeed(value) {
-    value = value.toUpperCase().replace(/\s/g, '').match(/.{1,4}/g).join(' ').trim()
-    this.setState({seed: value})
+    console.log('UpdateSeed', value)
+    if (value) {
+      // Nasty android issue where with the autocomplete
+      let lastChar = value.slice(-1).toUpperCase()
+      let newVal = this.state.seed + lastChar;
+      this.setState({seed: newVal.replace(/\s/g, '').match(/.{1,4}/g).join(' ').trim()})
+    } else {
+      this.setState({seed: ''})
+    }
   }
 
   _handleAddKey() {
@@ -63,27 +70,15 @@ class ImportKey extends React.Component {
       <View style={styles.container}>
         <View style={styles.top}>
           <TextInput
-          style={{height: 40,
-            borderColor: 'gray',
-            fontSize: 30,
-            borderWidth: 1,
-            marginVertical: 10,
-            paddingLeft: 10,
-            }}
+          style={Styles.input}
           placeholder='Key Name'
           onChangeText={(name) => this.setState({name})}
           value={this.state.name}
           />
           <TextInput
-          style={{height: 40,
-            borderColor: 'gray',
-            fontSize: 30,
-            borderWidth: 1,
-            marginVertical: 10,
-            paddingLeft: 10,
-            }}
+          style={Styles.input}
           placeholder='Backup Seed'
-          onChangeText={this._updateSeed.bind(this)}
+          onChangeText={(val)=>this._updateSeed(val)}
           value={this.state.seed}
           />
         </View>
