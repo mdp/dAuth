@@ -58,20 +58,29 @@ class KeyList extends React.Component {
   }
 
   componentDidMount() {
+    var url = Linking.getInitialURL().then((url) => {
+      if (url) {
+        this._handleOpenURL(url)
+      }
+    }).catch(err => console.error('An error occurred', err));
     if (Platform.OS === 'ios') {
-      Linking.addEventListener('url', this._handleOpenURL.bind(this));
+      Linking.addEventListener('url', this._handleOpenURLEvent.bind(this));
     }
   }
 
   componentWillUnmount() {
     if (Platform.OS === 'ios') {
-      Linking.removeEventListener('url', this._handleOpenURL.bind(this));
+      Linking.removeEventListener('url', this._handleOpenURLEvent.bind(this));
     }
   }
 
-  _handleOpenURL(event) {
-    logger.debug('OpenURLEvent', event);
-    let url = event.url
+  _handleOpenURLEvent(event) {
+    this._handleOpenURL(event.url)
+
+  }
+
+  _handleOpenURL(url) {
+    logger.debug('OpenURL', url);
     let challengeMatch = url.match(InboundURLMatcher)
     if (challengeMatch.length > 1) {
       this.props.navigator.push({
